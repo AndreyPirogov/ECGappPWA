@@ -1,0 +1,30 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: vitappio-holter
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+medom:
+  url: ${MEDOM_URL:https://medom.virtual-hospital.ru}
+  login: ${MEDOM_LOGIN:}
+  password: ${MEDOM_PASSWORD:}
+
+logging:
+  level:
+    root: INFO
+    ru.vitappio: DEBUG
+    org.springframework.web: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/vitappio.log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

@@ -115,6 +115,28 @@ body {
   font-size: 17px;
   color: var(--fg);
 }
+.hdr-settings {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg2);
+  padding: 6px;
+  border-radius: var(--rs);
+  transition: color 0.15s;
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.hdr-settings svg,
+.hdr-settings i {
+  pointer-events: none;
+}
+.hdr-settings:hover {
+  color: var(--accent);
+}
 
 .net-st {
   display: flex;
@@ -264,6 +286,10 @@ h3 {
   text-align: center;
 }
 
+.tl {
+  text-align: left;
+}
+
 @media (min-width: 481px) {
   h1 {
     font-size: 30px;
@@ -277,6 +303,13 @@ h3 {
   padding: 20px;
   box-shadow: var(--sh-s);
   margin-bottom: 14px;
+}
+
+.kit-img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  box-shadow: var(--sh-s);
 }
 
 .btn {
@@ -577,6 +610,26 @@ h3 {
   flex: 1;
 }
 
+.wz-step-img {
+  width: 100%;
+  max-width: 300px;
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 12px;
+  box-shadow: var(--sh-s);
+}
+
+.wz-note {
+  margin-top: 10px;
+  background: var(--warn-bg);
+  border: 1px solid #fde68a;
+  border-radius: var(--rs);
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #92400e;
+}
+
 .mdm {
   background: var(--card);
   border: 1px solid var(--card-b);
@@ -584,6 +637,29 @@ h3 {
   padding: 18px;
   margin-bottom: 18px;
   box-shadow: var(--sh-m);
+}
+
+.mdm-photo {
+  width: 100%;
+  max-width: 260px;
+  margin: 8px auto 12px;
+  display: block;
+  border-radius: 12px;
+  box-shadow: var(--sh-s);
+}
+
+.mdm-inst {
+  margin: 0 0 12px;
+}
+
+.mdm-inst p {
+  font-size: 14px;
+  color: var(--fg2);
+  line-height: 1.55;
+}
+
+.mdm-inst p + p {
+  margin-top: 8px;
 }
 
 .mdm-svg {
@@ -828,6 +904,14 @@ h3 {
 
 .supp-ph:hover {
   text-decoration: underline;
+}
+
+.conclusion-frame {
+  width: 100%;
+  min-height: 320px;
+  border: 1px solid var(--border);
+  border-radius: var(--rs);
+  background: #fff;
 }
 
 .dbg {

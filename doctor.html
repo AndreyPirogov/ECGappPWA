@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Vitappio — Кабинет врача</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="hdr">
+        <div class="hdr-top">
+          <div class="hdr-brand">
+            <div class="hdr-logo">MD</div>
+            <span class="hdr-name">Кабинет врача</span>
+          </div>
+        </div>
+        <div class="st-line" id="doctorStatus">Готово</div>
+      </header>
+
+      <main class="mn">
+        <section class="scr on">
+          <h2>Загрузка заключения (HTML)</h2>
+          <p class="sub">После загрузки пациент сможет получить заключение по ID пациента.</p>
+
+          <div class="fg">
+            <label class="fl" for="docApi">API URL</label>
+            <input class="fi" id="docApi" type="text" placeholder="http://localhost:8000" />
+          </div>
+
+          <div class="fg">
+            <label class="fl" for="docPatient">ID пациента</label>
+            <input class="fi" id="docPatient" type="text" placeholder="p-xxxxxxxxxxxx" />
+          </div>
+
+          <div class="fg">
+            <label class="fl" for="docName">ФИО врача (необязательно)</label>
+            <input class="fi" id="docName" type="text" placeholder="Иванов И.И." />
+          </div>
+
+          <div class="fg">
+            <label class="fl" for="docFile">HTML файл заключения (необязательно)</label>
+            <input class="fi" id="docFile" type="file" accept=".html,text/html" />
+          </div>
+
+          <div class="fg">
+            <label class="fl" for="docHtml">HTML заключения</label>
+            <textarea class="fi" id="docHtml" rows="14" placeholder="<h1>Заключение</h1><p>...</p>"></textarea>
+          </div>
+
+          <button class="btn btn-p" id="docUploadBtn" type="button"><span class="bt">Загрузить заключение</span></button>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const statusEl = document.getElementById("doctorStatus");
+      const apiInput = document.getElementById("docApi");
+      const patientInput = document.getElementById("docPatient");
+      const doctorInput = document.getElementById("docName");
+      const fileInput = document.getElementById("docFile");
+      const htmlInput = document.getElementById("docHtml");
+      const uploadBtn = document.getElementById("docUploadBtn");
+
+      function setStatus(type, text) {
+        const cls =
+          type === "ok"
+            ? " s-ok"
+            : type === "warn"
+              ? " s-warn"
+              : type === "err"
+                ? " s-err"
+                : type === "info"
+                  ? " s-info"
+                  : "";
+        statusEl.className = "st-line" + cls;
+        statusEl.textContent = text;
+      }
+
+      (function () {
+        const h = location.hostname;
+        const def =
+          h === "localhost" || h === "127.0.0.1" || !h
+            ? "http://127.0.0.1:8000"
+            : "https://medom.virtual-hospital.ru";
+        apiInput.value = localStorage.getItem("vitappio.apiBaseUrl") || def;
+      })();
+
+      fileInput.addEventListener("change", async () => {
+        const file = fileInput.files && fileInput.files[0];
+        if (!file) return;
+        htmlInput.value = await file.text();
+      });
+
+      uploadBtn.addEventListener("click", async () => {
+        const api = apiInput.value.trim().replace(/\/+$/, "");
+        const patientId = patientInput.value.trim();
+        const doctorName = doctorInput.value.trim();
+        const htmlContent = htmlInput.value.trim();
+
+        if (!api) {
+          setStatus("err", "Укажите API URL");
+          return;
+        }
+        if (!patientId) {
+          setStatus("err", "Укажите ID пациента");
+          return;
+        }
+        if (!htmlContent) {
+          setStatus("err", "Добавьте HTML заключение");
+          return;
+        }
+
+        uploadBtn.classList.add("ld");
+        uploadBtn.disabled = true;
+        setStatus("info", "Загрузка заключения...");
+
+        try {
+          const response = await fetch(api + "/patients/" + encodeURIComponent(patientId) + "/conclusion", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              html_content: htmlContent,
+              doctor_name: doctorName || null,
+            }),
+          });
+          if (!response.ok) {
+            throw new Error("HTTP " + response.status);
+          }
+          localStorage.setItem("vitappio.apiBaseUrl", api);
+          setStatus("ok", "Заключение успешно загружено");
+        } catch (error) {
+          setStatus("err", "Ошибка загрузки: " + (error && error.message ? error.message : "неизвестная"));
+        } finally {
+          uploadBtn.classList.remove("ld");
+          uploadBtn.disabled = false;
+        }
+      });
+    </script>
+  </body>
+</html>
