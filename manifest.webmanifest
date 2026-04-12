@@ -1,0 +1,12 @@
+{
+  "name": "Vitappio - Установка холтера",
+  "short_name": "Vitappio",
+  "description": "Пошаговая инструкция по установке холтера Vitappio",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f1f5f9",
+  "theme_color": "#0F766E",
+  "orientation": "portrait",
+  "lang": "ru",
+  "icons": []
+}
