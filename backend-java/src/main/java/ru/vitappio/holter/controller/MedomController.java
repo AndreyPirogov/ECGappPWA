@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import ru.vitappio.holter.dto.*;
 import ru.vitappio.holter.service.MedomService;
+import ru.vitappio.holter.service.PatientService;
+import ru.vitappio.holter.service.SessionService;
 
 import java.util.List;
 import java.util.Map;
@@ -17,9 +19,13 @@ public class MedomController {
     private static final Logger log = LoggerFactory.getLogger(MedomController.class);
 
     private final MedomService medomService;
+    private final PatientService patientService;
+    private final SessionService sessionService;
 
-    public MedomController(MedomService medomService) {
+    public MedomController(MedomService medomService, PatientService patientService, SessionService sessionService) {
         this.medomService = medomService;
+        this.patientService = patientService;
+        this.sessionService = sessionService;
     }
 
     @PostMapping("/credentials")
@@ -61,6 +67,12 @@ public class MedomController {
                 request.isFemale(),
                 request.birthDate()
         );
+        String fullName = String.join(" ",
+                request.lastName(),
+                request.firstName(),
+                request.secondName()).trim();
+        String gender = request.isFemale() == 1 ? "female" : "male";
+        patientService.registerExternalPatient(String.valueOf(patientId), fullName, request.birthDate(), gender);
         return Map.of("patient_id", patientId);
     }
 
@@ -78,6 +90,7 @@ public class MedomController {
                 request.deviceId(),
                 request.comment()
         );
+        sessionService.registerExternalSession(String.valueOf(sessionId), String.valueOf(request.patientId()));
         return Map.of("session_id", sessionId);
     }
 

@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -38,26 +39,107 @@
       </header>
 
       <main class="mn" role="main">
-        <!-- ===== SCREEN 1: INTRO ===== -->
-        <section class="scr on" id="scr-intro" aria-label="Приветствие">
+        <!-- ===== SCREEN: AUTH (first screen) ===== -->
+        <section class="scr on" id="scr-auth" aria-label="Авторизация">
           <div style="text-align: center; margin-bottom: 24px">
-            <div
-              style="
-                width: 64px;
-                height: 64px;
-                background: var(--accent);
-                border-radius: 16px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                color: #fff;
-                margin-bottom: 14px;
-                animation: si 0.5s ease-out;
-              "
-            >
+            <div style="width: 64px; height: 64px; background: var(--accent); border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 14px; animation: si 0.5s ease-out;">
               <i data-lucide="heart-pulse" style="width: 32px; height: 32px"></i>
             </div>
-            <h1>Установка холтера Vitappio</h1>
+            <h1>Vitappio</h1>
+            <p class="sub">Система мониторинга ЭКГ</p>
+          </div>
+
+          <div class="cd">
+            <h3>Добро пожаловать</h3>
+            <p class="sm mb12">Войдите в существующий аккаунт или зарегистрируйтесь как новый пациент.</p>
+            <button class="btn btn-p mb12" id="btnGoLogin" type="button"><span class="bt">Войти</span></button>
+            <button class="btn btn-s" id="btnGoRegister" type="button"><span class="bt">Зарегистрироваться</span></button>
+          </div>
+
+          <div class="ftg">
+            <div class="ftc">
+              <div class="fti"><i data-lucide="mouse-pointer-click" style="width: 20px; height: 20px"></i></div>
+              <div class="ftt">Просто</div>
+            </div>
+            <div class="ftc">
+              <div class="fti"><i data-lucide="shield-check" style="width: 20px; height: 20px"></i></div>
+              <div class="ftt">Безопасно</div>
+            </div>
+            <div class="ftc">
+              <div class="fti"><i data-lucide="badge-check" style="width: 20px; height: 20px"></i></div>
+              <div class="ftt">Надёжно</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== SCREEN: LOGIN ===== -->
+        <section class="scr" id="scr-login" aria-label="Вход">
+          <button class="bk" type="button" id="bkLogin"><i data-lucide="arrow-left" style="width: 16px; height: 16px"></i> Назад</button>
+          <h2>Вход</h2>
+          <p class="sub">Введите ваши данные для поиска учётной записи.</p>
+
+          <div class="fg">
+            <label class="fl" for="fLoginName">ФИО <span class="rq">*</span></label>
+            <input class="fi" id="fLoginName" type="text" placeholder="Иванов Иван Иванович" autocomplete="name" />
+            <div class="fe" id="fLoginNameErr">Укажите ФИО</div>
+          </div>
+          <div class="fg">
+            <label class="fl" for="fLoginDob">Дата рождения <span class="rq">*</span></label>
+            <input class="fi" id="fLoginDob" type="date" />
+            <div class="fe" id="fLoginDobErr">Укажите дату рождения</div>
+          </div>
+
+          <button class="btn btn-p" id="btnLogin" type="button"><span class="bt">Войти</span></button>
+          <div class="cd mt12" id="loginError" style="display:none; background: var(--err-bg); border-color: #fca5a5">
+            <p class="sm" style="color: var(--err)" id="loginErrorText"></p>
+          </div>
+        </section>
+
+        <!-- ===== SCREEN: DASHBOARD ===== -->
+        <section class="scr" id="scr-dashboard" aria-label="Кабинет пациента">
+          <h2>Кабинет пациента</h2>
+          <div class="cd mb12" id="dashPatientCard">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+              <div style="width:42px;height:42px;background:var(--accent-l);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent);flex-shrink:0">
+                <i data-lucide="user" style="width:22px;height:22px"></i>
+              </div>
+              <div>
+                <div style="font-family:var(--fui);font-weight:700;font-size:16px" id="dashPatientName"></div>
+                <div class="sm" id="dashPatientMeta"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cd mb12" id="dashActiveSession" style="display:none">
+            <h3 style="display:flex;align-items:center;gap:6px"><i data-lucide="activity" style="width:18px;height:18px;color:var(--ok)"></i> Активная сессия</h3>
+            <p class="sm mb12" id="dashActiveSessionInfo"></p>
+            <button class="btn btn-p" id="btnGoDiary" type="button"><span class="bt">Открыть дневник</span></button>
+          </div>
+
+          <div class="cd mb12" id="dashNoSession" style="display:none">
+            <h3 style="display:flex;align-items:center;gap:6px"><i data-lucide="plus-circle" style="width:18px;height:18px;color:var(--accent)"></i> Новая сессия</h3>
+            <p class="sm mb12">Нет активной сессии мониторинга. Начните новую для записи ЭКГ.</p>
+            <button class="btn btn-p" id="btnNewSession" type="button"><span class="bt">Начать новую сессию</span></button>
+          </div>
+
+          <div id="dashReports" style="display:none">
+            <h3 class="mb8" style="display:flex;align-items:center;gap:6px"><i data-lucide="file-text" style="width:18px;height:18px;color:var(--accent)"></i> Завершённые сессии</h3>
+            <div id="dashReportsList"></div>
+          </div>
+
+          <div class="mt24">
+            <button class="btn btn-s" id="btnLogout" type="button"><span class="bt">Выйти</span></button>
+          </div>
+        </section>
+
+        <!-- ===== SCREEN: INTRO (preparation checklist) ===== -->
+        <section class="scr" id="scr-intro" aria-label="Подготовка к установке">
+          <button class="bk" type="button" id="bkIntro"><i data-lucide="arrow-left" style="width: 16px; height: 16px"></i> Назад</button>
+          <div style="text-align: center; margin-bottom: 24px">
+            <div style="width: 64px; height: 64px; background: var(--accent); border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; color: #fff; margin-bottom: 14px; animation: si 0.5s ease-out;">
+              <i data-lucide="heart-pulse" style="width: 32px; height: 32px"></i>
+            </div>
+            <h1>Установка холтера</h1>
             <p class="sub">Пошаговая инструкция по самостоятельной установке</p>
           </div>
 
@@ -83,21 +165,6 @@
             </ul>
             <button class="btn btn-p btn-pls" id="btnStart" type="button"><span class="bt">Начать установку</span></button>
           </div>
-
-          <div class="ftg">
-            <div class="ftc">
-              <div class="fti"><i data-lucide="mouse-pointer-click" style="width: 20px; height: 20px"></i></div>
-              <div class="ftt">Просто</div>
-            </div>
-            <div class="ftc">
-              <div class="fti"><i data-lucide="shield-check" style="width: 20px; height: 20px"></i></div>
-              <div class="ftt">Безопасно</div>
-            </div>
-            <div class="ftc">
-              <div class="fti"><i data-lucide="badge-check" style="width: 20px; height: 20px"></i></div>
-              <div class="ftt">Надёжно</div>
-            </div>
-          </div>
         </section>
 
         <!-- ===== SCREEN 2: KIT 1 ===== -->
@@ -122,11 +189,11 @@
           <button class="btn btn-p" id="btnKit2Next" type="button"><span class="bt">Продолжить</span></button>
         </section>
 
-        <!-- ===== SCREEN 4: PATIENT ===== -->
-        <section class="scr" id="scr-patient" aria-label="Данные пациента">
+        <!-- ===== SCREEN: PATIENT REGISTRATION ===== -->
+        <section class="scr" id="scr-patient" aria-label="Регистрация пациента">
           <button class="bk" type="button" id="bkPatient"><i data-lucide="arrow-left" style="width: 16px; height: 16px"></i> Назад</button>
-          <h2>Данные пациента</h2>
-          <p class="sub">Информация будет зарегистрирована на сервере для начала мониторинга.</p>
+          <h2>Регистрация</h2>
+          <p class="sub">Заполните данные для создания учётной записи пациента.</p>
 
           <div class="fg">
             <label class="fl" for="fName">ФИО <span class="rq">*</span></label>
@@ -151,7 +218,37 @@
           <button class="btn btn-p" id="btnReg" type="button"><span class="bt">Зарегистрировать пациента</span></button>
         </section>
 
-        <!-- ===== SCREEN 3: DEVICE ===== -->
+        <!-- ===== SCREEN: CREDENTIALS (after registration) ===== -->
+        <section class="scr" id="scr-credentials" aria-label="Ваши данные для входа">
+          <div style="text-align: center; margin-bottom: 20px">
+            <div class="ic-lg ic-lg-ok"><i data-lucide="user-check" style="width: 38px; height: 38px"></i></div>
+            <h1>Регистрация завершена</h1>
+            <p class="sub" style="max-width: 340px; margin: 0 auto">Запомните или сохраните ваши данные для входа.</p>
+          </div>
+
+          <div class="cd mb12">
+            <h3 style="margin-bottom: 12px">Ваши данные для входа</h3>
+            <div class="fg" style="margin-bottom: 10px">
+              <label class="fl">Логин (ФИО)</label>
+              <div class="fi" id="credLogin" style="background:var(--bg);user-select:all;cursor:text"></div>
+            </div>
+            <div class="fg" style="margin-bottom: 10px">
+              <label class="fl">Пароль (дата рождения)</label>
+              <div class="fi" id="credPassword" style="background:var(--bg);user-select:all;cursor:text"></div>
+            </div>
+            <div class="cd" style="background: var(--warn-bg); border-color: #fde68a; padding: 12px 14px">
+              <p style="font-size: 13px; color: #92400e; display: flex; align-items: flex-start; gap: 8px">
+                <i data-lucide="alert-triangle" style="width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px"></i>
+                <span>Сохраните эти данные. Они потребуются для повторного входа в приложение.</span>
+              </p>
+            </div>
+          </div>
+
+          <button class="btn btn-s mb12" id="btnCopyCreds" type="button"><span class="bt"><i data-lucide="copy" style="width:16px;height:16px;vertical-align:-3px"></i> Скопировать</span></button>
+          <button class="btn btn-p" id="btnCredsNext" type="button"><span class="bt">Продолжить</span></button>
+        </section>
+
+        <!-- ===== SCREEN: DEVICE ===== -->
         <section class="scr" id="scr-device" aria-label="Номер прибора">
           <button class="bk" type="button" id="bkDevice"><i data-lucide="arrow-left" style="width: 16px; height: 16px"></i> Назад</button>
           <h2>Номер прибора</h2>
@@ -163,7 +260,7 @@
             <div class="fe" id="fSerialErr">Укажите серийный номер прибора</div>
           </div>
           <div class="fg" id="fDeviceGroup" style="display:none">
-            <label class="fl" for="fDevice">Устройство MEDOM <span class="rq">*</span></label>
+            <label class="fl" for="fDevice">Устройство (серийный номер) <span class="rq">*</span></label>
             <select class="fs" id="fDevice">
               <option value="">Загрузка устройств…</option>
             </select>
@@ -374,12 +471,12 @@
             <button class="btn btn-p mb12" id="btnCheckConclusion" type="button" style="max-width: 320px; margin: 0 auto">
               <span class="bt">Проверить заключение</span>
             </button>
-            <button class="btn btn-s" id="btnReset" type="button" style="max-width: 320px; margin: 0 auto"><span class="bt">Новый пациент</span></button>
+            <button class="btn btn-s" id="btnReset" type="button" style="max-width: 320px; margin: 0 auto"><span class="bt">В кабинет</span></button>
           </div>
         </section>
       </main>
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=20260413c"></script>
   </body>
 </html>

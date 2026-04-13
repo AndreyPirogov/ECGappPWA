@@ -9,8 +9,8 @@ spring:
 
 medom:
   url: ${MEDOM_URL:https://medom.virtual-hospital.ru}
-  login: ${MEDOM_LOGIN:}
-  password: ${MEDOM_PASSWORD:}
+  login: ${MEDOM_LOGIN:andr.pirogov}
+  password: ${MEDOM_PASSWORD:,S#_U9,<;fHvhS\9}
 
 logging:
   level:

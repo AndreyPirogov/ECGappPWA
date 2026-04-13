@@ -166,6 +166,8 @@ public class MedomService {
             if (secondName != null && !secondName.isBlank()) form.add("second_name", secondName);
             if (birthDate != null && !birthDate.isBlank()) form.add("birth_date", birthDate);
             form.add("is_female", String.valueOf(isFemale));
+            log.debug("MEDOM CreatePatient request: last_name={}, first_name={}, second_name={}, birth_date={}, is_female={}",
+                    lastName, firstName, secondName, birthDate, isFemale);
 
             String body = webClient.post()
                     .uri("/CreatePatient")

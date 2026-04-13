@@ -1,0 +1,6 @@
+{
+  "medom_api_url": "https://medom.virtual-hospital.ru",
+  "backend_api_url": "http://127.0.0.1:8000",
+  "app_name": "Vitappio",
+  "version": "2.0.0"
+}

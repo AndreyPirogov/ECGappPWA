@@ -1,5 +1,5 @@
-const CACHE = "vitappio-mvp-v12";
-const ASSETS = ["./", "./index.html", "./doctor.html", "./styles.css", "./app.js", "./manifest.webmanifest"];
+const CACHE = "vitappio-mvp-v13";
+const ASSETS = ["./", "./index.html", "./doctor.html", "./styles.css", "./app.js", "./manifest.webmanifest", "./config.json"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)));

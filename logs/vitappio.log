@@ -404,3 +404,1232 @@ Original Stack Trace:
 		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 		at java.base/java.lang.Thread.run(Thread.java:1583)
 2026-04-12 19:44:48.415 INFO  [http-nio-8000-exec-8] http.access : POST /medom/sessions 502 — 399ms
+2026-04-13 11:57:42.269 INFO  [main] r.v.holter.VitappioApplication : Starting VitappioApplication using Java 21.0.7 with PID 22224 (D:\rep\ECGappPWA\ECGappPWA\backend-java\target\classes started by dranp in D:\rep\ECGappPWA\ECGappPWA)
+2026-04-13 11:57:42.270 DEBUG [main] r.v.holter.VitappioApplication : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-04-13 11:57:42.272 INFO  [main] r.v.holter.VitappioApplication : No active profile set, falling back to 1 default profile: "default"
+2026-04-13 11:57:44.035 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port 8000 (http)
+2026-04-13 11:57:44.051 INFO  [main] o.a.catalina.core.StandardService : Starting service [Tomcat]
+2026-04-13 11:57:44.051 INFO  [main] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-04-13 11:57:44.117 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2026-04-13 11:57:44.119 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1796 ms
+2026-04-13 11:57:44.338 DEBUG [main] r.v.h.config.RequestLoggingConfig$1 : Filter 'requestLoggingFilter' configured for use
+2026-04-13 11:57:45.410 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver : Exposing 3 endpoints beneath base path '/actuator'
+2026-04-13 11:57:45.504 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port 8000 (http) with context path '/'
+2026-04-13 11:57:45.518 INFO  [main] r.v.holter.VitappioApplication : Started VitappioApplication in 3.983 seconds (process running for 4.49)
+2026-04-13 12:07:02.323 INFO  [main] r.v.holter.VitappioApplication : Starting VitappioApplication using Java 21.0.7 with PID 10360 (D:\rep\ECGappPWA\ECGappPWA\backend-java\target\classes started by dranp in D:\rep\ECGappPWA\ECGappPWA)
+2026-04-13 12:07:02.324 DEBUG [main] r.v.holter.VitappioApplication : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-04-13 12:07:02.325 INFO  [main] r.v.holter.VitappioApplication : No active profile set, falling back to 1 default profile: "default"
+2026-04-13 12:07:03.738 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port 8000 (http)
+2026-04-13 12:07:03.749 INFO  [main] o.a.catalina.core.StandardService : Starting service [Tomcat]
+2026-04-13 12:07:03.749 INFO  [main] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-04-13 12:07:03.795 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2026-04-13 12:07:03.796 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1432 ms
+2026-04-13 12:07:03.941 DEBUG [main] r.v.h.config.RequestLoggingConfig$1 : Filter 'requestLoggingFilter' configured for use
+2026-04-13 12:07:05.042 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver : Exposing 3 endpoints beneath base path '/actuator'
+2026-04-13 12:07:05.172 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port 8000 (http) with context path '/'
+2026-04-13 12:07:05.185 INFO  [main] r.v.holter.VitappioApplication : Started VitappioApplication in 3.402 seconds (process running for 5.025)
+2026-04-13 12:09:18.124 INFO  [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-13 12:09:18.125 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-13 12:09:18.129 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Completed initialization in 3 ms
+2026-04-13 12:09:18.211 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /medom/credentials 200 — 44ms
+2026-04-13 12:09:18.498 INFO  [http-nio-8000-exec-2] r.v.h.controller.MedomController : POST /medom/credentials — login=andr.pirogov
+2026-04-13 12:09:18.501 INFO  [http-nio-8000-exec-2] r.v.holter.service.MedomService : MEDOM login attempt: user=andr.pirogov
+2026-04-13 12:09:20.212 INFO  [http-nio-8000-exec-2] http.access : POST /medom/credentials 200 — 1973ms
+2026-04-13 12:09:57.204 INFO  [http-nio-8000-exec-3] http.access : OPTIONS /medom/patients 200 — 3ms
+2026-04-13 12:09:57.252 INFO  [http-nio-8000-exec-4] r.v.h.controller.MedomController : POST /medom/patients — name=Иванов Петр
+2026-04-13 12:09:57.441 INFO  [http-nio-8000-exec-4] r.v.holter.service.MedomService : MEDOM patient created: response=14438
+2026-04-13 12:09:57.468 INFO  [http-nio-8000-exec-4] http.access : POST /medom/patients 200 — 240ms
+2026-04-13 12:09:57.515 INFO  [http-nio-8000-exec-5] http.access : OPTIONS /medom/devices 200 — 4ms
+2026-04-13 12:09:57.542 DEBUG [http-nio-8000-exec-6] r.v.h.controller.MedomController : GET /medom/devices
+2026-04-13 12:09:57.721 INFO  [http-nio-8000-exec-6] http.access : GET /medom/devices 200 — 183ms
+2026-04-13 12:10:11.643 INFO  [http-nio-8000-exec-7] http.access : OPTIONS /medom/sessions 200 — 1ms
+2026-04-13 12:10:11.679 INFO  [http-nio-8000-exec-8] r.v.h.controller.MedomController : POST /medom/sessions — patient=14438, device=2
+2026-04-13 12:10:11.692 DEBUG [http-nio-8000-exec-8] r.v.holter.service.MedomService : MEDOM CreateSession request: patientId=14438, deviceId=2, cookies=[.AspNet.ApplicationCookie, .AspNet.ExternalCookie, .AspNet.TwoFactorCookie]
+2026-04-13 12:10:11.894 INFO  [http-nio-8000-exec-8] r.v.holter.service.MedomService : MEDOM session created: response=7384
+2026-04-13 12:10:11.901 INFO  [http-nio-8000-exec-8] http.access : POST /medom/sessions 200 — 236ms
+2026-04-13 12:10:46.154 INFO  [http-nio-8000-exec-9] http.access : OPTIONS /sessions/7384/status 200 — 3ms
+2026-04-13 12:10:46.170 DEBUG [http-nio-8000-exec-10] r.v.h.controller.SessionController : GET /sessions/7384/status
+2026-04-13 12:10:46.175 WARN  [http-nio-8000-exec-10] r.v.h.e.GlobalExceptionHandler : Not found: Session not found
+2026-04-13 12:10:46.180 INFO  [http-nio-8000-exec-10] http.access : GET /sessions/7384/status 404 — 13ms
+2026-04-13 12:10:55.588 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /medom/sessions/7384/events 200 — 1ms
+2026-04-13 12:10:55.635 DEBUG [http-nio-8000-exec-2] r.v.h.controller.MedomController : POST /medom/sessions/7384/events — text=Ходьба
+2026-04-13 12:10:55.718 ERROR [http-nio-8000-exec-2] r.v.h.e.GlobalExceptionHandler : MEDOM proxy error: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+ru.vitappio.holter.exception.MedomProxyException: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:276)
+	at ru.vitappio.holter.controller.MedomController.addEvent(MedomController.java:99)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at ru.vitappio.holter.config.RequestLoggingConfig$1.doFilterInternal(RequestLoggingConfig.java:30)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1767)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1541)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1446)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:958)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseInteger(StdDeserializer.java:808)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:531)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:506)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4905)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3848)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3816)
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:272)
+	... 57 common frames omitted
+2026-04-13 12:10:55.725 INFO  [http-nio-8000-exec-2] http.access : POST /medom/sessions/7384/events 502 — 112ms
+2026-04-13 12:11:08.315 DEBUG [http-nio-8000-exec-3] r.v.h.controller.MedomController : POST /medom/sessions/7384/events — text=Приём лекарства
+2026-04-13 12:11:08.353 ERROR [http-nio-8000-exec-3] r.v.h.e.GlobalExceptionHandler : MEDOM proxy error: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+ru.vitappio.holter.exception.MedomProxyException: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:276)
+	at ru.vitappio.holter.controller.MedomController.addEvent(MedomController.java:99)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at ru.vitappio.holter.config.RequestLoggingConfig$1.doFilterInternal(RequestLoggingConfig.java:30)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1767)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1541)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1446)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:958)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseInteger(StdDeserializer.java:808)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:531)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:506)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4905)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3848)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3816)
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:272)
+	... 57 common frames omitted
+2026-04-13 12:11:08.358 INFO  [http-nio-8000-exec-3] http.access : POST /medom/sessions/7384/events 502 — 45ms
+2026-04-13 12:11:26.915 INFO  [http-nio-8000-exec-4] http.access : OPTIONS /medom/sessions/7384/finish 200 — 1ms
+2026-04-13 12:11:26.939 INFO  [http-nio-8000-exec-5] r.v.h.controller.MedomController : POST /medom/sessions/7384/finish
+2026-04-13 12:11:27.072 INFO  [http-nio-8000-exec-5] http.access : POST /medom/sessions/7384/finish 200 — 135ms
+2026-04-13 12:11:27.512 INFO  [http-nio-8000-exec-6] http.access : OPTIONS /patients/14438/conclusion 200 — 1ms
+2026-04-13 12:11:27.530 DEBUG [http-nio-8000-exec-7] r.v.h.controller.PatientController : GET /patients/14438/conclusion
+2026-04-13 12:11:27.531 WARN  [http-nio-8000-exec-7] r.v.h.e.GlobalExceptionHandler : Not found: Patient not found
+2026-04-13 12:11:27.533 INFO  [http-nio-8000-exec-7] http.access : GET /patients/14438/conclusion 404 — 5ms
+2026-04-13 12:11:30.955 DEBUG [http-nio-8000-exec-8] r.v.h.controller.PatientController : GET /patients/14438/conclusion
+2026-04-13 12:11:30.956 WARN  [http-nio-8000-exec-8] r.v.h.e.GlobalExceptionHandler : Not found: Patient not found
+2026-04-13 12:11:30.957 INFO  [http-nio-8000-exec-8] http.access : GET /patients/14438/conclusion 404 — 3ms
+2026-04-13 12:18:18.283 INFO  [http-nio-8000-exec-10] r.v.h.controller.PatientController : POST /patients/14438/conclusion
+2026-04-13 12:18:18.284 WARN  [http-nio-8000-exec-10] r.v.h.e.GlobalExceptionHandler : Not found: Patient not found
+2026-04-13 12:18:18.286 INFO  [http-nio-8000-exec-10] http.access : POST /patients/14438/conclusion 404 — 33ms
+2026-04-13 12:18:54.844 DEBUG [http-nio-8000-exec-1] r.v.h.controller.PatientController : GET /patients/14438/conclusion
+2026-04-13 12:18:54.845 WARN  [http-nio-8000-exec-1] r.v.h.e.GlobalExceptionHandler : Not found: Patient not found
+2026-04-13 12:18:54.851 INFO  [http-nio-8000-exec-1] http.access : GET /patients/14438/conclusion 404 — 10ms
+2026-04-13 12:18:55.075 INFO  [http-nio-8000-exec-2] http.access : GET /favicon.ico 404 — 37ms
+2026-04-13 12:25:16.768 INFO  [main] r.v.holter.VitappioApplication : Starting VitappioApplication using Java 21.0.7 with PID 22184 (D:\rep\ECGappPWA\ECGappPWA\backend-java\target\classes started by dranp in D:\rep\ECGappPWA\ECGappPWA)
+2026-04-13 12:25:16.776 DEBUG [main] r.v.holter.VitappioApplication : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-04-13 12:25:16.777 INFO  [main] r.v.holter.VitappioApplication : No active profile set, falling back to 1 default profile: "default"
+2026-04-13 12:25:18.704 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port 8000 (http)
+2026-04-13 12:25:18.722 INFO  [main] o.a.catalina.core.StandardService : Starting service [Tomcat]
+2026-04-13 12:25:18.722 INFO  [main] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-04-13 12:25:18.784 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2026-04-13 12:25:18.785 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1952 ms
+2026-04-13 12:25:18.953 DEBUG [main] r.v.h.config.RequestLoggingConfig$1 : Filter 'requestLoggingFilter' configured for use
+2026-04-13 12:25:20.175 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver : Exposing 3 endpoints beneath base path '/actuator'
+2026-04-13 12:25:20.324 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port 8000 (http) with context path '/'
+2026-04-13 12:25:20.340 INFO  [main] r.v.holter.VitappioApplication : Started VitappioApplication in 4.212 seconds (process running for 4.652)
+2026-04-13 12:26:26.434 INFO  [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-13 12:26:26.435 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-13 12:26:26.441 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Completed initialization in 3 ms
+2026-04-13 12:26:26.784 INFO  [http-nio-8000-exec-1] r.v.h.controller.MedomController : POST /medom/patients — name=петров игорь
+2026-04-13 12:26:28.730 WARN  [http-nio-8000-exec-1] r.v.h.e.GlobalExceptionHandler : Bad request: MEDOM credentials not configured
+2026-04-13 12:26:28.769 INFO  [http-nio-8000-exec-1] http.access : POST /medom/patients 400 — 2294ms
+2026-04-13 12:26:59.142 WARN  [http-nio-8000-exec-2] r.v.h.e.GlobalExceptionHandler : Method not supported: Request method 'GET' is not supported
+2026-04-13 12:26:59.149 INFO  [http-nio-8000-exec-2] http.access : GET /medom/patients 405 — 16ms
+2026-04-13 12:33:50.327 INFO  [main] r.v.holter.VitappioApplication : Starting VitappioApplication using Java 21.0.7 with PID 22456 (D:\rep\ECGappPWA\ECGappPWA\backend-java\target\classes started by dranp in D:\rep\ECGappPWA\ECGappPWA)
+2026-04-13 12:33:50.329 DEBUG [main] r.v.holter.VitappioApplication : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-04-13 12:33:50.330 INFO  [main] r.v.holter.VitappioApplication : No active profile set, falling back to 1 default profile: "default"
+2026-04-13 12:33:51.665 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port 8000 (http)
+2026-04-13 12:33:51.676 INFO  [main] o.a.catalina.core.StandardService : Starting service [Tomcat]
+2026-04-13 12:33:51.676 INFO  [main] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-04-13 12:33:51.730 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2026-04-13 12:33:51.730 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1354 ms
+2026-04-13 12:33:51.870 DEBUG [main] r.v.h.config.RequestLoggingConfig$1 : Filter 'requestLoggingFilter' configured for use
+2026-04-13 12:33:52.922 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver : Exposing 3 endpoints beneath base path '/actuator'
+2026-04-13 12:33:52.996 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port 8000 (http) with context path '/'
+2026-04-13 12:33:53.011 INFO  [main] r.v.holter.VitappioApplication : Started VitappioApplication in 3.18 seconds (process running for 3.544)
+2026-04-13 12:34:21.263 INFO  [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-13 12:34:21.265 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-13 12:34:21.270 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Completed initialization in 2 ms
+2026-04-13 12:34:21.351 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /medom/patients 200 — 46ms
+2026-04-13 12:34:21.655 INFO  [http-nio-8000-exec-4] r.v.h.controller.MedomController : POST /medom/patients — name=Петров Игорь
+2026-04-13 12:34:23.643 WARN  [http-nio-8000-exec-4] r.v.h.e.GlobalExceptionHandler : Bad request: MEDOM credentials not configured
+2026-04-13 12:34:23.680 INFO  [http-nio-8000-exec-4] http.access : POST /medom/patients 400 — 2298ms
+2026-04-13 12:37:30.139 INFO  [main] r.v.holter.VitappioApplication : Starting VitappioApplication using Java 21.0.7 with PID 23792 (D:\rep\ECGappPWA\ECGappPWA\backend-java\target\classes started by dranp in D:\rep\ECGappPWA\ECGappPWA)
+2026-04-13 12:37:30.140 DEBUG [main] r.v.holter.VitappioApplication : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-04-13 12:37:30.142 INFO  [main] r.v.holter.VitappioApplication : No active profile set, falling back to 1 default profile: "default"
+2026-04-13 12:37:31.463 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port 8000 (http)
+2026-04-13 12:37:31.475 INFO  [main] o.a.catalina.core.StandardService : Starting service [Tomcat]
+2026-04-13 12:37:31.476 INFO  [main] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-04-13 12:37:31.524 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2026-04-13 12:37:31.525 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1346 ms
+2026-04-13 12:37:31.659 DEBUG [main] r.v.h.config.RequestLoggingConfig$1 : Filter 'requestLoggingFilter' configured for use
+2026-04-13 12:37:32.575 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver : Exposing 3 endpoints beneath base path '/actuator'
+2026-04-13 12:37:32.681 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port 8000 (http) with context path '/'
+2026-04-13 12:37:32.693 INFO  [main] r.v.holter.VitappioApplication : Started VitappioApplication in 3.068 seconds (process running for 3.438)
+2026-04-13 12:38:08.983 INFO  [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-13 12:38:08.985 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-13 12:38:08.990 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Completed initialization in 2 ms
+2026-04-13 12:38:09.059 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /medom/patients 200 — 39ms
+2026-04-13 12:38:09.413 INFO  [http-nio-8000-exec-2] r.v.h.controller.MedomController : POST /medom/patients — name=тест тест
+2026-04-13 12:38:11.447 WARN  [http-nio-8000-exec-2] r.v.h.e.GlobalExceptionHandler : Bad request: MEDOM credentials not configured
+2026-04-13 12:38:11.489 INFO  [http-nio-8000-exec-2] http.access : POST /medom/patients 400 — 2397ms
+2026-04-13 12:40:38.418 INFO  [http-nio-8000-exec-3] http.access : OPTIONS /medom/credentials 200 — 1ms
+2026-04-13 12:40:38.453 INFO  [http-nio-8000-exec-4] r.v.h.controller.MedomController : POST /medom/credentials — login=andr.pirogov
+2026-04-13 12:40:38.454 INFO  [http-nio-8000-exec-4] r.v.holter.service.MedomService : MEDOM login attempt: user=andr.pirogov
+2026-04-13 12:40:39.112 INFO  [http-nio-8000-exec-4] http.access : POST /medom/credentials 200 — 670ms
+2026-04-13 12:40:39.157 INFO  [http-nio-8000-exec-5] http.access : OPTIONS /medom/patients 200 — 10ms
+2026-04-13 12:40:39.181 INFO  [http-nio-8000-exec-6] r.v.h.controller.MedomController : POST /medom/patients — name=тест тест
+2026-04-13 12:40:43.139 ERROR [reactor-http-nio-3] r.v.holter.service.MedomService : MEDOM CreatePatient error: HTTP 500 INTERNAL_SERVER_ERROR — {"Message":"An error has occurred."}
+2026-04-13 12:40:43.167 ERROR [http-nio-8000-exec-6] r.v.h.e.GlobalExceptionHandler : MEDOM proxy error: MEDOM CreatePatient failed: HTTP 500 — {"Message":"An error has occurred."}
+ru.vitappio.holter.exception.MedomProxyException: MEDOM CreatePatient failed: HTTP 500 — {"Message":"An error has occurred."}
+	at ru.vitappio.holter.service.MedomService.lambda$3(MedomService.java:82)
+	at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:132)
+	at reactor.core.publisher.FluxDefaultIfEmpty$DefaultIfEmptySubscriber.onNext(FluxDefaultIfEmpty.java:122)
+	at reactor.core.publisher.FluxOnAssembly$OnAssemblySubscriber.onNext(FluxOnAssembly.java:539)
+	at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:129)
+	at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onNext(FluxContextWrite.java:107)
+	at reactor.core.publisher.FluxMapFuseable$MapFuseableConditionalSubscriber.onNext(FluxMapFuseable.java:299)
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableConditionalSubscriber.onNext(FluxFilterFuseable.java:337)
+	at reactor.core.publisher.Operators$BaseFluxToMonoOperator.completePossiblyEmpty(Operators.java:2097)
+	at reactor.core.publisher.MonoCollect$CollectSubscriber.onComplete(MonoCollect.java:145)
+	at reactor.core.publisher.FluxMap$MapSubscriber.onComplete(FluxMap.java:144)
+	at reactor.core.publisher.FluxPeek$PeekSubscriber.onComplete(FluxPeek.java:260)
+	at reactor.core.publisher.FluxMap$MapSubscriber.onComplete(FluxMap.java:144)
+	at reactor.netty.channel.FluxReceive.onInboundComplete(FluxReceive.java:415)
+	at reactor.netty.channel.ChannelOperations.onInboundComplete(ChannelOperations.java:445)
+	at reactor.netty.channel.ChannelOperations.terminate(ChannelOperations.java:499)
+	at reactor.netty.http.client.HttpClientOperations.onInboundNext(HttpClientOperations.java:800)
+	at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:115)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:289)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:442)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:436)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:346)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:318)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:251)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:442)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.handler.ssl.SslHandler.unwrap(SslHandler.java:1503)
+	at io.netty.handler.ssl.SslHandler.decodeJdkCompatible(SslHandler.java:1366)
+	at io.netty.handler.ssl.SslHandler.decode(SslHandler.java:1415)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:530)
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:469)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1357)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:868)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104)
+		at reactor.core.publisher.Mono.block(Mono.java:1779)
+		at ru.vitappio.holter.service.MedomService.createPatient(MedomService.java:176)
+		at ru.vitappio.holter.controller.MedomController.createPatient(MedomController.java:60)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+		at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+		at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+		at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+		at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+		at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+		at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+		at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at ru.vitappio.holter.config.RequestLoggingConfig$1.doFilterInternal(RequestLoggingConfig.java:30)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		... 1 common frames omitted
+2026-04-13 12:40:43.199 INFO  [http-nio-8000-exec-6] http.access : POST /medom/patients 502 — 4023ms
+2026-04-13 12:43:14.694 INFO  [main] r.v.holter.VitappioApplication : Starting VitappioApplication using Java 21.0.7 with PID 24364 (D:\rep\ECGappPWA\ECGappPWA\backend-java\target\classes started by dranp in D:\rep\ECGappPWA\ECGappPWA)
+2026-04-13 12:43:14.695 DEBUG [main] r.v.holter.VitappioApplication : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-04-13 12:43:14.696 INFO  [main] r.v.holter.VitappioApplication : No active profile set, falling back to 1 default profile: "default"
+2026-04-13 12:43:16.292 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port 8000 (http)
+2026-04-13 12:43:16.308 INFO  [main] o.a.catalina.core.StandardService : Starting service [Tomcat]
+2026-04-13 12:43:16.308 INFO  [main] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-04-13 12:43:16.368 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2026-04-13 12:43:16.369 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1626 ms
+2026-04-13 12:43:16.581 DEBUG [main] r.v.h.config.RequestLoggingConfig$1 : Filter 'requestLoggingFilter' configured for use
+2026-04-13 12:43:17.997 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver : Exposing 3 endpoints beneath base path '/actuator'
+2026-04-13 12:43:18.069 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port 8000 (http) with context path '/'
+2026-04-13 12:43:18.080 INFO  [main] r.v.holter.VitappioApplication : Started VitappioApplication in 3.897 seconds (process running for 4.257)
+2026-04-13 12:43:45.051 INFO  [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-13 12:43:45.052 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-13 12:43:45.054 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Completed initialization in 2 ms
+2026-04-13 12:43:45.127 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /medom/credentials 200 — 39ms
+2026-04-13 12:43:45.469 INFO  [http-nio-8000-exec-2] r.v.h.controller.MedomController : POST /medom/credentials — login=andr.pirogov
+2026-04-13 12:43:45.471 INFO  [http-nio-8000-exec-2] r.v.holter.service.MedomService : MEDOM login attempt: user=andr.pirogov
+2026-04-13 12:43:48.076 INFO  [http-nio-8000-exec-2] http.access : POST /medom/credentials 200 — 2918ms
+2026-04-13 12:43:48.111 INFO  [http-nio-8000-exec-3] http.access : OPTIONS /medom/patients 200 — 2ms
+2026-04-13 12:43:48.160 INFO  [http-nio-8000-exec-4] r.v.h.controller.MedomController : POST /medom/patients — name=петров игорь
+2026-04-13 12:43:48.262 DEBUG [http-nio-8000-exec-4] r.v.holter.service.MedomService : MEDOM CreatePatient request: last_name=петров, first_name=игорь, second_name=иванович, birth_date=1999-03-21, is_female=0
+2026-04-13 12:43:48.550 INFO  [http-nio-8000-exec-4] r.v.holter.service.MedomService : MEDOM patient created: response=14441
+2026-04-13 12:43:48.561 INFO  [http-nio-8000-exec-4] http.access : POST /medom/patients 200 — 422ms
+2026-04-13 12:43:48.614 INFO  [http-nio-8000-exec-5] http.access : OPTIONS /medom/devices 200 — 7ms
+2026-04-13 12:43:48.638 DEBUG [http-nio-8000-exec-6] r.v.h.controller.MedomController : GET /medom/devices
+2026-04-13 12:43:48.990 INFO  [http-nio-8000-exec-6] http.access : GET /medom/devices 200 — 356ms
+2026-04-13 12:43:52.284 INFO  [http-nio-8000-exec-7] http.access : OPTIONS /medom/sessions 200 — 2ms
+2026-04-13 12:43:52.327 INFO  [http-nio-8000-exec-9] r.v.h.controller.MedomController : POST /medom/sessions — patient=14441, device=3
+2026-04-13 12:43:52.427 DEBUG [http-nio-8000-exec-9] r.v.holter.service.MedomService : MEDOM CreateSession request: patientId=14441, deviceId=3, cookies=[.AspNet.ApplicationCookie, .AspNet.ExternalCookie, .AspNet.TwoFactorCookie]
+2026-04-13 12:43:52.767 INFO  [http-nio-8000-exec-9] r.v.holter.service.MedomService : MEDOM session created: response=7386
+2026-04-13 12:43:52.770 INFO  [http-nio-8000-exec-9] http.access : POST /medom/sessions 200 — 460ms
+2026-04-13 12:44:04.585 INFO  [http-nio-8000-exec-8] http.access : OPTIONS /sessions/7386/status 200 — 3ms
+2026-04-13 12:44:04.604 DEBUG [http-nio-8000-exec-10] r.v.h.controller.SessionController : GET /sessions/7386/status
+2026-04-13 12:44:04.608 WARN  [http-nio-8000-exec-10] r.v.h.e.GlobalExceptionHandler : Not found: Session not found
+2026-04-13 12:44:04.617 INFO  [http-nio-8000-exec-10] http.access : GET /sessions/7386/status 404 — 15ms
+2026-04-13 12:44:09.599 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /sessions/7386/status 200 — 1ms
+2026-04-13 12:44:09.616 DEBUG [http-nio-8000-exec-2] r.v.h.controller.SessionController : GET /sessions/7386/status
+2026-04-13 12:44:09.619 WARN  [http-nio-8000-exec-2] r.v.h.e.GlobalExceptionHandler : Not found: Session not found
+2026-04-13 12:44:09.621 INFO  [http-nio-8000-exec-2] http.access : GET /sessions/7386/status 404 — 8ms
+2026-04-13 12:44:14.602 INFO  [http-nio-8000-exec-3] http.access : OPTIONS /sessions/7386/status 200 — 3ms
+2026-04-13 12:44:14.615 DEBUG [http-nio-8000-exec-4] r.v.h.controller.SessionController : GET /sessions/7386/status
+2026-04-13 12:44:14.615 WARN  [http-nio-8000-exec-4] r.v.h.e.GlobalExceptionHandler : Not found: Session not found
+2026-04-13 12:44:14.617 INFO  [http-nio-8000-exec-4] http.access : GET /sessions/7386/status 404 — 4ms
+2026-04-13 12:44:19.727 INFO  [http-nio-8000-exec-5] http.access : OPTIONS /sessions/7386/status 200 — 1ms
+2026-04-13 12:44:19.749 DEBUG [http-nio-8000-exec-6] r.v.h.controller.SessionController : GET /sessions/7386/status
+2026-04-13 12:44:19.750 WARN  [http-nio-8000-exec-6] r.v.h.e.GlobalExceptionHandler : Not found: Session not found
+2026-04-13 12:44:19.751 INFO  [http-nio-8000-exec-6] http.access : GET /sessions/7386/status 404 — 3ms
+2026-04-13 12:44:24.726 INFO  [http-nio-8000-exec-7] http.access : OPTIONS /sessions/7386/status 200 — 1ms
+2026-04-13 12:44:24.745 DEBUG [http-nio-8000-exec-9] r.v.h.controller.SessionController : GET /sessions/7386/status
+2026-04-13 12:44:24.745 WARN  [http-nio-8000-exec-9] r.v.h.e.GlobalExceptionHandler : Not found: Session not found
+2026-04-13 12:44:24.746 INFO  [http-nio-8000-exec-9] http.access : GET /sessions/7386/status 404 — 2ms
+2026-04-13 12:44:29.729 INFO  [http-nio-8000-exec-8] http.access : OPTIONS /sessions/7386/status 200 — 1ms
+2026-04-13 12:44:29.748 DEBUG [http-nio-8000-exec-10] r.v.h.controller.SessionController : GET /sessions/7386/status
+2026-04-13 12:44:29.749 WARN  [http-nio-8000-exec-10] r.v.h.e.GlobalExceptionHandler : Not found: Session not found
+2026-04-13 12:44:29.752 INFO  [http-nio-8000-exec-10] http.access : GET /sessions/7386/status 404 — 6ms
+2026-04-13 12:44:34.734 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /sessions/7386/status 200 — 1ms
+2026-04-13 12:44:34.755 DEBUG [http-nio-8000-exec-2] r.v.h.controller.SessionController : GET /sessions/7386/status
+2026-04-13 12:44:34.756 WARN  [http-nio-8000-exec-2] r.v.h.e.GlobalExceptionHandler : Not found: Session not found
+2026-04-13 12:44:34.759 INFO  [http-nio-8000-exec-2] http.access : GET /sessions/7386/status 404 — 6ms
+2026-04-13 12:44:39.594 INFO  [http-nio-8000-exec-3] http.access : OPTIONS /sessions/7386/status 200 — 2ms
+2026-04-13 12:44:39.610 DEBUG [http-nio-8000-exec-4] r.v.h.controller.SessionController : GET /sessions/7386/status
+2026-04-13 12:44:39.611 WARN  [http-nio-8000-exec-4] r.v.h.e.GlobalExceptionHandler : Not found: Session not found
+2026-04-13 12:44:39.612 INFO  [http-nio-8000-exec-4] http.access : GET /sessions/7386/status 404 — 3ms
+2026-04-13 12:44:43.907 INFO  [http-nio-8000-exec-5] http.access : OPTIONS /medom/sessions/7386/events 200 — 2ms
+2026-04-13 12:44:43.952 DEBUG [http-nio-8000-exec-6] r.v.h.controller.MedomController : POST /medom/sessions/7386/events — text=Стресс
+2026-04-13 12:44:44.181 ERROR [http-nio-8000-exec-6] r.v.h.e.GlobalExceptionHandler : MEDOM proxy error: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+ru.vitappio.holter.exception.MedomProxyException: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:278)
+	at ru.vitappio.holter.controller.MedomController.addEvent(MedomController.java:108)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at ru.vitappio.holter.config.RequestLoggingConfig$1.doFilterInternal(RequestLoggingConfig.java:30)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1767)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1541)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1446)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:958)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseInteger(StdDeserializer.java:808)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:531)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:506)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4905)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3848)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3816)
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:274)
+	... 57 common frames omitted
+2026-04-13 12:44:44.194 INFO  [http-nio-8000-exec-6] http.access : POST /medom/sessions/7386/events 502 — 267ms
+2026-04-13 12:44:47.010 INFO  [http-nio-8000-exec-7] http.access : OPTIONS /medom/sessions/7386/events 200 — 1ms
+2026-04-13 12:44:47.034 DEBUG [http-nio-8000-exec-9] r.v.h.controller.MedomController : POST /medom/sessions/7386/events — text=Приём лекарства
+2026-04-13 12:44:47.264 ERROR [http-nio-8000-exec-9] r.v.h.e.GlobalExceptionHandler : MEDOM proxy error: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+ru.vitappio.holter.exception.MedomProxyException: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:278)
+	at ru.vitappio.holter.controller.MedomController.addEvent(MedomController.java:108)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at ru.vitappio.holter.config.RequestLoggingConfig$1.doFilterInternal(RequestLoggingConfig.java:30)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1767)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1541)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1446)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:958)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseInteger(StdDeserializer.java:808)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:531)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:506)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4905)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3848)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3816)
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:274)
+	... 57 common frames omitted
+2026-04-13 12:44:47.271 INFO  [http-nio-8000-exec-9] http.access : POST /medom/sessions/7386/events 502 — 239ms
+2026-04-13 12:44:52.867 INFO  [http-nio-8000-exec-8] http.access : OPTIONS /medom/sessions/7386/finish 200 — 1ms
+2026-04-13 12:44:52.892 INFO  [http-nio-8000-exec-10] r.v.h.controller.MedomController : POST /medom/sessions/7386/finish
+2026-04-13 12:44:53.182 INFO  [http-nio-8000-exec-10] http.access : POST /medom/sessions/7386/finish 200 — 291ms
+2026-04-13 12:44:53.628 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /patients/14441/conclusion 200 — 2ms
+2026-04-13 12:44:53.657 DEBUG [http-nio-8000-exec-2] r.v.h.controller.PatientController : GET /patients/14441/conclusion
+2026-04-13 12:44:53.662 INFO  [http-nio-8000-exec-2] http.access : GET /patients/14441/conclusion 200 — 8ms
+2026-04-13 12:45:11.338 INFO  [http-nio-8000-exec-3] http.access : OPTIONS /patients/14441/conclusion 200 — 1ms
+2026-04-13 12:45:11.389 INFO  [http-nio-8000-exec-4] r.v.h.controller.PatientController : POST /patients/14441/conclusion
+2026-04-13 12:45:11.390 INFO  [http-nio-8000-exec-4] r.v.holter.service.PatientService : Conclusion uploaded for patient: 14441
+2026-04-13 12:45:11.409 INFO  [http-nio-8000-exec-4] http.access : POST /patients/14441/conclusion 200 — 57ms
+2026-04-13 12:45:16.853 INFO  [http-nio-8000-exec-5] http.access : OPTIONS /patients/14441/conclusion 200 — 2ms
+2026-04-13 12:45:16.864 DEBUG [http-nio-8000-exec-6] r.v.h.controller.PatientController : GET /patients/14441/conclusion
+2026-04-13 12:45:16.870 INFO  [http-nio-8000-exec-6] http.access : GET /patients/14441/conclusion 200 — 8ms
+2026-04-13 12:46:20.562 INFO  [main] r.v.holter.VitappioApplication : Starting VitappioApplication using Java 21.0.7 with PID 4624 (D:\rep\ECGappPWA\ECGappPWA\backend-java\target\classes started by dranp in D:\rep\ECGappPWA\ECGappPWA)
+2026-04-13 12:46:20.564 DEBUG [main] r.v.holter.VitappioApplication : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-04-13 12:46:20.565 INFO  [main] r.v.holter.VitappioApplication : No active profile set, falling back to 1 default profile: "default"
+2026-04-13 12:46:22.030 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port 8000 (http)
+2026-04-13 12:46:22.044 INFO  [main] o.a.catalina.core.StandardService : Starting service [Tomcat]
+2026-04-13 12:46:22.046 INFO  [main] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-04-13 12:46:22.094 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2026-04-13 12:46:22.094 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1486 ms
+2026-04-13 12:46:22.234 DEBUG [main] r.v.h.config.RequestLoggingConfig$1 : Filter 'requestLoggingFilter' configured for use
+2026-04-13 12:46:23.332 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver : Exposing 3 endpoints beneath base path '/actuator'
+2026-04-13 12:46:23.436 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port 8000 (http) with context path '/'
+2026-04-13 12:46:23.448 INFO  [main] r.v.holter.VitappioApplication : Started VitappioApplication in 3.427 seconds (process running for 3.781)
+2026-04-13 12:46:59.629 INFO  [http-nio-8000-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-13 12:46:59.630 INFO  [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-13 12:46:59.636 INFO  [http-nio-8000-exec-2] o.s.web.servlet.DispatcherServlet : Completed initialization in 4 ms
+2026-04-13 12:46:59.719 INFO  [http-nio-8000-exec-2] http.access : OPTIONS /medom/credentials 200 — 37ms
+2026-04-13 12:47:00.003 INFO  [http-nio-8000-exec-5] r.v.h.controller.MedomController : POST /medom/credentials — login=andr.pirogov
+2026-04-13 12:47:00.004 INFO  [http-nio-8000-exec-5] r.v.holter.service.MedomService : MEDOM login attempt: user=andr.pirogov
+2026-04-13 12:47:02.613 INFO  [http-nio-8000-exec-5] http.access : POST /medom/credentials 200 — 2860ms
+2026-04-13 12:47:02.635 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /medom/patients 200 — 3ms
+2026-04-13 12:47:02.690 INFO  [http-nio-8000-exec-3] r.v.h.controller.MedomController : POST /medom/patients — name=тестик и
+2026-04-13 12:47:02.793 DEBUG [http-nio-8000-exec-3] r.v.holter.service.MedomService : MEDOM CreatePatient request: last_name=тестик, first_name=и, second_name=, birth_date=2026-04-10, is_female=0
+2026-04-13 12:47:03.062 INFO  [http-nio-8000-exec-3] r.v.holter.service.MedomService : MEDOM patient created: response=14442
+2026-04-13 12:47:03.076 INFO  [http-nio-8000-exec-3] http.access : POST /medom/patients 200 — 416ms
+2026-04-13 12:47:03.143 INFO  [http-nio-8000-exec-6] http.access : OPTIONS /medom/devices 200 — 6ms
+2026-04-13 12:47:03.175 DEBUG [http-nio-8000-exec-4] r.v.h.controller.MedomController : GET /medom/devices
+2026-04-13 12:47:03.515 INFO  [http-nio-8000-exec-4] http.access : GET /medom/devices 200 — 346ms
+2026-04-13 12:47:09.268 INFO  [http-nio-8000-exec-7] http.access : OPTIONS /medom/sessions 200 — 2ms
+2026-04-13 12:47:09.303 INFO  [http-nio-8000-exec-9] r.v.h.controller.MedomController : POST /medom/sessions — patient=14442, device=13
+2026-04-13 12:47:09.406 DEBUG [http-nio-8000-exec-9] r.v.holter.service.MedomService : MEDOM CreateSession request: patientId=14442, deviceId=13, cookies=[.AspNet.ApplicationCookie, .AspNet.ExternalCookie, .AspNet.TwoFactorCookie]
+2026-04-13 12:47:09.692 INFO  [http-nio-8000-exec-9] r.v.holter.service.MedomService : MEDOM session created: response=7387
+2026-04-13 12:47:09.696 INFO  [http-nio-8000-exec-9] http.access : POST /medom/sessions 200 — 408ms
+2026-04-13 12:47:19.277 INFO  [http-nio-8000-exec-8] http.access : OPTIONS /sessions/7387/status 200 — 1ms
+2026-04-13 12:47:19.296 DEBUG [http-nio-8000-exec-10] r.v.h.controller.SessionController : GET /sessions/7387/status
+2026-04-13 12:47:19.300 INFO  [http-nio-8000-exec-10] http.access : GET /sessions/7387/status 200 — 8ms
+2026-04-13 12:47:24.287 INFO  [http-nio-8000-exec-2] http.access : OPTIONS /sessions/7387/status 200 — 4ms
+2026-04-13 12:47:24.309 DEBUG [http-nio-8000-exec-5] r.v.h.controller.SessionController : GET /sessions/7387/status
+2026-04-13 12:47:24.312 INFO  [http-nio-8000-exec-5] http.access : GET /sessions/7387/status 200 — 6ms
+2026-04-13 12:47:29.300 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /sessions/7387/status 200 — 3ms
+2026-04-13 12:47:29.321 DEBUG [http-nio-8000-exec-3] r.v.h.controller.SessionController : GET /sessions/7387/status
+2026-04-13 12:47:29.324 INFO  [http-nio-8000-exec-3] http.access : GET /sessions/7387/status 200 — 6ms
+2026-04-13 12:47:32.226 INFO  [http-nio-8000-exec-6] http.access : OPTIONS /medom/sessions/7387/events 200 — 2ms
+2026-04-13 12:47:32.277 DEBUG [http-nio-8000-exec-4] r.v.h.controller.MedomController : POST /medom/sessions/7387/events — text=Бег
+2026-04-13 12:47:32.514 ERROR [http-nio-8000-exec-4] r.v.h.e.GlobalExceptionHandler : MEDOM proxy error: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+ru.vitappio.holter.exception.MedomProxyException: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:278)
+	at ru.vitappio.holter.controller.MedomController.addEvent(MedomController.java:112)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at ru.vitappio.holter.config.RequestLoggingConfig$1.doFilterInternal(RequestLoggingConfig.java:30)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1767)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1541)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1446)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:958)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseInteger(StdDeserializer.java:808)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:531)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:506)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4905)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3848)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3816)
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:274)
+	... 57 common frames omitted
+2026-04-13 12:47:32.537 INFO  [http-nio-8000-exec-4] http.access : POST /medom/sessions/7387/events 502 — 287ms
+2026-04-13 12:47:56.488 INFO  [http-nio-8000-exec-7] http.access : OPTIONS /medom/sessions/7387/events 200 — 1ms
+2026-04-13 12:47:56.509 DEBUG [http-nio-8000-exec-9] r.v.h.controller.MedomController : POST /medom/sessions/7387/events — text=Сон
+2026-04-13 12:47:56.728 ERROR [http-nio-8000-exec-9] r.v.h.e.GlobalExceptionHandler : MEDOM proxy error: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+ru.vitappio.holter.exception.MedomProxyException: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:278)
+	at ru.vitappio.holter.controller.MedomController.addEvent(MedomController.java:112)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at ru.vitappio.holter.config.RequestLoggingConfig$1.doFilterInternal(RequestLoggingConfig.java:30)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1767)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1541)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1446)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:958)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseInteger(StdDeserializer.java:808)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:531)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:506)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4905)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3848)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3816)
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:274)
+	... 57 common frames omitted
+2026-04-13 12:47:56.731 INFO  [http-nio-8000-exec-9] http.access : POST /medom/sessions/7387/events 502 — 224ms
+2026-04-13 12:48:23.467 INFO  [http-nio-8000-exec-8] http.access : OPTIONS /medom/sessions/7387/finish 200 — 2ms
+2026-04-13 12:48:23.492 INFO  [http-nio-8000-exec-10] r.v.h.controller.MedomController : POST /medom/sessions/7387/finish
+2026-04-13 12:48:23.779 INFO  [http-nio-8000-exec-10] http.access : POST /medom/sessions/7387/finish 200 — 289ms
+2026-04-13 12:48:24.231 INFO  [http-nio-8000-exec-2] http.access : OPTIONS /patients/14442/conclusion 200 — 3ms
+2026-04-13 12:48:24.257 DEBUG [http-nio-8000-exec-5] r.v.h.controller.PatientController : GET /patients/14442/conclusion
+2026-04-13 12:48:24.260 INFO  [http-nio-8000-exec-5] http.access : GET /patients/14442/conclusion 200 — 6ms
+2026-04-13 12:48:38.045 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /patients/14442/conclusion 200 — 1ms
+2026-04-13 12:48:38.088 INFO  [http-nio-8000-exec-3] r.v.h.controller.PatientController : POST /patients/14442/conclusion
+2026-04-13 12:48:38.088 INFO  [http-nio-8000-exec-3] r.v.holter.service.PatientService : Conclusion uploaded for patient: 14442
+2026-04-13 12:48:38.101 INFO  [http-nio-8000-exec-3] http.access : POST /patients/14442/conclusion 200 — 43ms
+2026-04-13 12:48:41.597 INFO  [http-nio-8000-exec-6] http.access : OPTIONS /patients/14442/conclusion 200 — 1ms
+2026-04-13 12:48:41.609 DEBUG [http-nio-8000-exec-4] r.v.h.controller.PatientController : GET /patients/14442/conclusion
+2026-04-13 12:48:41.617 INFO  [http-nio-8000-exec-4] http.access : GET /patients/14442/conclusion 200 — 10ms
+2026-04-13 12:53:46.913 INFO  [http-nio-8000-exec-9] http.access : OPTIONS /medom/credentials 200 — 1ms
+2026-04-13 12:53:46.955 INFO  [http-nio-8000-exec-8] r.v.h.controller.MedomController : POST /medom/credentials — login=andr.pirogov
+2026-04-13 12:53:46.957 INFO  [http-nio-8000-exec-8] r.v.holter.service.MedomService : MEDOM login attempt: user=andr.pirogov
+2026-04-13 12:53:47.597 INFO  [http-nio-8000-exec-8] http.access : POST /medom/credentials 200 — 647ms
+2026-04-13 12:53:47.636 INFO  [http-nio-8000-exec-10] http.access : OPTIONS /medom/patients 200 — 3ms
+2026-04-13 12:53:47.670 INFO  [http-nio-8000-exec-2] r.v.h.controller.MedomController : POST /medom/patients — name=Иванов к
+2026-04-13 12:53:47.778 DEBUG [http-nio-8000-exec-2] r.v.holter.service.MedomService : MEDOM CreatePatient request: last_name=Иванов, first_name=к, second_name=, birth_date=2026-04-02, is_female=0
+2026-04-13 12:53:48.035 INFO  [http-nio-8000-exec-2] r.v.holter.service.MedomService : MEDOM patient created: response=14444
+2026-04-13 12:53:48.039 INFO  [http-nio-8000-exec-2] http.access : POST /medom/patients 200 — 372ms
+2026-04-13 12:53:48.097 INFO  [http-nio-8000-exec-5] http.access : OPTIONS /medom/devices 200 — 2ms
+2026-04-13 12:53:48.120 DEBUG [http-nio-8000-exec-1] r.v.h.controller.MedomController : GET /medom/devices
+2026-04-13 12:53:48.443 INFO  [http-nio-8000-exec-1] http.access : GET /medom/devices 200 — 323ms
+2026-04-13 12:54:45.362 INFO  [http-nio-8000-exec-3] http.access : OPTIONS /medom/sessions 200 — 1ms
+2026-04-13 12:54:45.391 INFO  [http-nio-8000-exec-6] r.v.h.controller.MedomController : POST /medom/sessions — patient=14444, device=13
+2026-04-13 12:54:45.498 DEBUG [http-nio-8000-exec-6] r.v.holter.service.MedomService : MEDOM CreateSession request: patientId=14444, deviceId=13, cookies=[.AspNet.ApplicationCookie, .AspNet.ExternalCookie, .AspNet.TwoFactorCookie]
+2026-04-13 12:54:45.788 INFO  [http-nio-8000-exec-6] r.v.holter.service.MedomService : MEDOM session created: response=7389
+2026-04-13 12:54:45.791 INFO  [http-nio-8000-exec-6] http.access : POST /medom/sessions 200 — 401ms
+2026-04-13 12:55:58.991 INFO  [http-nio-8000-exec-7] http.access : OPTIONS /sessions/7389/status 200 — 3ms
+2026-04-13 12:55:59.018 DEBUG [http-nio-8000-exec-9] r.v.h.controller.SessionController : GET /sessions/7389/status
+2026-04-13 12:55:59.020 INFO  [http-nio-8000-exec-9] http.access : GET /sessions/7389/status 200 — 4ms
+2026-04-13 12:56:25.468 INFO  [http-nio-8000-exec-8] http.access : OPTIONS /medom/sessions/7389/events 200 — 1ms
+2026-04-13 12:56:25.508 DEBUG [http-nio-8000-exec-10] r.v.h.controller.MedomController : POST /medom/sessions/7389/events — text=Сон
+2026-04-13 12:56:25.750 ERROR [http-nio-8000-exec-10] r.v.h.e.GlobalExceptionHandler : MEDOM proxy error: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+ru.vitappio.holter.exception.MedomProxyException: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:278)
+	at ru.vitappio.holter.controller.MedomController.addEvent(MedomController.java:112)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at ru.vitappio.holter.config.RequestLoggingConfig$1.doFilterInternal(RequestLoggingConfig.java:30)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1767)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1541)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1446)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:958)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseInteger(StdDeserializer.java:808)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:531)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:506)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4905)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3848)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3816)
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:274)
+	... 57 common frames omitted
+2026-04-13 12:56:25.753 INFO  [http-nio-8000-exec-10] http.access : POST /medom/sessions/7389/events 502 — 251ms
+2026-04-13 12:56:36.913 INFO  [http-nio-8000-exec-2] http.access : OPTIONS /medom/sessions/7389/events 200 — 2ms
+2026-04-13 12:56:36.945 DEBUG [http-nio-8000-exec-5] r.v.h.controller.MedomController : POST /medom/sessions/7389/events — text=Ходьба
+2026-04-13 12:56:37.193 ERROR [http-nio-8000-exec-5] r.v.h.e.GlobalExceptionHandler : MEDOM proxy error: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+ru.vitappio.holter.exception.MedomProxyException: MEDOM AddUserEvent failed: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:278)
+	at ru.vitappio.holter.controller.MedomController.addEvent(MedomController.java:112)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at ru.vitappio.holter.config.RequestLoggingConfig$1.doFilterInternal(RequestLoggingConfig.java:30)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.Integer` from Object value (token `JsonToken.START_OBJECT`)
+ at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 1]
+	at com.fasterxml.jackson.databind.exc.MismatchedInputException.from(MismatchedInputException.java:59)
+	at com.fasterxml.jackson.databind.DeserializationContext.reportInputMismatch(DeserializationContext.java:1767)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1541)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnexpectedToken(DeserializationContext.java:1446)
+	at com.fasterxml.jackson.databind.DeserializationContext.extractScalarFromObject(DeserializationContext.java:958)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer._parseInteger(StdDeserializer.java:808)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:531)
+	at com.fasterxml.jackson.databind.deser.std.NumberDeserializers$IntegerDeserializer.deserialize(NumberDeserializers.java:506)
+	at com.fasterxml.jackson.databind.deser.DefaultDeserializationContext.readRootValue(DefaultDeserializationContext.java:342)
+	at com.fasterxml.jackson.databind.ObjectMapper._readMapAndClose(ObjectMapper.java:4905)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3848)
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3816)
+	at ru.vitappio.holter.service.MedomService.addUserEvent(MedomService.java:274)
+	... 57 common frames omitted
+2026-04-13 12:56:37.216 INFO  [http-nio-8000-exec-5] http.access : POST /medom/sessions/7389/events 502 — 274ms
+2026-04-13 12:57:07.972 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /medom/sessions/7389/finish 200 — 3ms
+2026-04-13 12:57:08.007 INFO  [http-nio-8000-exec-3] r.v.h.controller.MedomController : POST /medom/sessions/7389/finish
+2026-04-13 12:57:08.348 INFO  [http-nio-8000-exec-3] http.access : POST /medom/sessions/7389/finish 200 — 343ms
+2026-04-13 12:57:08.796 INFO  [http-nio-8000-exec-6] http.access : OPTIONS /patients/14444/conclusion 200 — 3ms
+2026-04-13 12:57:08.818 DEBUG [http-nio-8000-exec-4] r.v.h.controller.PatientController : GET /patients/14444/conclusion
+2026-04-13 12:57:08.821 INFO  [http-nio-8000-exec-4] http.access : GET /patients/14444/conclusion 200 — 6ms
+2026-04-13 12:57:50.267 INFO  [http-nio-8000-exec-7] http.access : OPTIONS /patients/14444/conclusion 200 — 2ms
+2026-04-13 12:57:50.330 INFO  [http-nio-8000-exec-9] r.v.h.controller.PatientController : POST /patients/14444/conclusion
+2026-04-13 12:57:50.331 INFO  [http-nio-8000-exec-9] r.v.holter.service.PatientService : Conclusion uploaded for patient: 14444
+2026-04-13 12:57:50.336 INFO  [http-nio-8000-exec-9] http.access : POST /patients/14444/conclusion 200 — 43ms
+2026-04-13 12:58:06.381 INFO  [http-nio-8000-exec-8] http.access : OPTIONS /patients/14444/conclusion 200 — 2ms
+2026-04-13 12:58:06.407 DEBUG [http-nio-8000-exec-10] r.v.h.controller.PatientController : GET /patients/14444/conclusion
+2026-04-13 12:58:06.415 INFO  [http-nio-8000-exec-10] http.access : GET /patients/14444/conclusion 200 — 10ms
+2026-04-13 16:32:28.670 INFO  [main] r.v.holter.VitappioApplication : Starting VitappioApplication using Java 21.0.7 with PID 25140 (D:\rep\ECGappPWA\ECGappPWA\backend-java\target\classes started by dranp in D:\rep\ECGappPWA\ECGappPWA)
+2026-04-13 16:32:28.672 DEBUG [main] r.v.holter.VitappioApplication : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-04-13 16:32:28.673 INFO  [main] r.v.holter.VitappioApplication : No active profile set, falling back to 1 default profile: "default"
+2026-04-13 16:32:32.038 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port 8000 (http)
+2026-04-13 16:32:32.091 INFO  [main] o.a.catalina.core.StandardService : Starting service [Tomcat]
+2026-04-13 16:32:32.092 INFO  [main] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-04-13 16:32:32.266 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2026-04-13 16:32:32.267 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3532 ms
+2026-04-13 16:32:32.603 DEBUG [main] r.v.h.config.RequestLoggingConfig$1 : Filter 'requestLoggingFilter' configured for use
+2026-04-13 16:32:35.050 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver : Exposing 3 endpoints beneath base path '/actuator'
+2026-04-13 16:32:35.562 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port 8000 (http) with context path '/'
+2026-04-13 16:32:35.585 INFO  [main] r.v.holter.VitappioApplication : Started VitappioApplication in 8.112 seconds (process running for 8.942)
+2026-04-13 16:35:04.176 INFO  [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-13 16:35:04.177 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-13 16:35:04.180 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Completed initialization in 2 ms
+2026-04-13 16:35:04.272 INFO  [http-nio-8000-exec-1] http.access : OPTIONS /medom/credentials 200 — 55ms
+2026-04-13 16:35:04.646 INFO  [http-nio-8000-exec-2] r.v.h.controller.MedomController : POST /medom/credentials — login=andr.pirogov
+2026-04-13 16:35:04.648 INFO  [http-nio-8000-exec-2] r.v.holter.service.MedomService : MEDOM login attempt: user=andr.pirogov
+2026-04-13 16:35:07.652 INFO  [http-nio-8000-exec-2] http.access : POST /medom/credentials 200 — 3343ms
+2026-04-13 16:35:07.691 INFO  [http-nio-8000-exec-3] http.access : OPTIONS /medom/patients 200 — 4ms
+2026-04-13 16:35:07.753 INFO  [http-nio-8000-exec-4] r.v.h.controller.MedomController : POST /medom/patients — name=Петр тест
+2026-04-13 16:35:07.870 DEBUG [http-nio-8000-exec-4] r.v.holter.service.MedomService : MEDOM CreatePatient request: last_name=Петр, first_name=тест, second_name=сергеевич, birth_date=2026-04-09, is_female=0
+2026-04-13 16:35:08.126 INFO  [http-nio-8000-exec-4] r.v.holter.service.MedomService : MEDOM patient created: response=14449
+2026-04-13 16:35:08.139 INFO  [http-nio-8000-exec-4] http.access : POST /medom/patients 200 — 416ms
+2026-04-13 16:39:55.875 INFO  [main] r.v.holter.VitappioApplication : Starting VitappioApplication using Java 21.0.7 with PID 25340 (D:\rep\ECGappPWA\ECGappPWA\backend-java\target\classes started by dranp in D:\rep\ECGappPWA\ECGappPWA)
+2026-04-13 16:39:55.877 DEBUG [main] r.v.holter.VitappioApplication : Running with Spring Boot v3.3.5, Spring v6.1.14
+2026-04-13 16:39:55.879 INFO  [main] r.v.holter.VitappioApplication : No active profile set, falling back to 1 default profile: "default"
+2026-04-13 16:39:59.370 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat initialized with port 8000 (http)
+2026-04-13 16:39:59.403 INFO  [main] o.a.catalina.core.StandardService : Starting service [Tomcat]
+2026-04-13 16:39:59.403 INFO  [main] o.a.catalina.core.StandardEngine : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-04-13 16:39:59.543 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring embedded WebApplicationContext
+2026-04-13 16:39:59.544 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3594 ms
+2026-04-13 16:39:59.943 DEBUG [main] r.v.h.config.RequestLoggingConfig$1 : Filter 'requestLoggingFilter' configured for use
+2026-04-13 16:40:02.866 INFO  [main] o.s.b.a.e.web.EndpointLinksResolver : Exposing 3 endpoints beneath base path '/actuator'
+2026-04-13 16:40:03.188 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer : Tomcat started on port 8000 (http) with context path '/'
+2026-04-13 16:40:03.224 INFO  [main] r.v.holter.VitappioApplication : Started VitappioApplication in 8.472 seconds (process running for 9.338)
+2026-04-13 16:40:31.269 INFO  [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-13 16:40:31.270 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
+2026-04-13 16:40:31.276 INFO  [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet : Completed initialization in 4 ms
+2026-04-13 16:40:31.727 INFO  [http-nio-8000-exec-1] r.v.h.controller.MedomController : POST /medom/credentials — login=andr.pirogov
+2026-04-13 16:40:31.731 INFO  [http-nio-8000-exec-1] r.v.holter.service.MedomService : MEDOM login attempt: user=andr.pirogov
+2026-04-13 16:40:34.463 INFO  [http-nio-8000-exec-1] http.access : POST /medom/credentials 200 — 3137ms
+2026-04-13 16:40:34.535 INFO  [http-nio-8000-exec-2] r.v.h.controller.MedomController : POST /medom/patients — name=тест павел
+2026-04-13 16:40:34.647 DEBUG [http-nio-8000-exec-2] r.v.holter.service.MedomService : MEDOM CreatePatient request: last_name=тест, first_name=павел, second_name=а, birth_date=2026-04-01, is_female=0
+2026-04-13 16:40:34.928 INFO  [http-nio-8000-exec-2] r.v.holter.service.MedomService : MEDOM patient created: response=14450
+2026-04-13 16:40:34.942 INFO  [http-nio-8000-exec-2] http.access : POST /medom/patients 200 — 428ms
+2026-04-13 16:41:24.956 INFO  [http-nio-8000-exec-3] http.access : OPTIONS /medom/devices 200 — 7ms
+2026-04-13 16:41:24.978 DEBUG [http-nio-8000-exec-4] r.v.h.controller.MedomController : GET /medom/devices
+2026-04-13 16:41:25.342 INFO  [http-nio-8000-exec-4] http.access : GET /medom/devices 200 — 367ms
+2026-04-13 16:41:40.300 INFO  [http-nio-8000-exec-5] http.access : OPTIONS /medom/sessions 200 — 2ms
+2026-04-13 16:41:40.357 INFO  [http-nio-8000-exec-6] r.v.h.controller.MedomController : POST /medom/sessions — patient=14450, device=91
+2026-04-13 16:41:40.466 DEBUG [http-nio-8000-exec-6] r.v.holter.service.MedomService : MEDOM CreateSession request: patientId=14450, deviceId=91, cookies=[.AspNet.ApplicationCookie, .AspNet.ExternalCookie, .AspNet.TwoFactorCookie]
+2026-04-13 16:41:40.662 ERROR [reactor-http-nio-3] r.v.holter.service.MedomService : MEDOM CreateSession error: HTTP 400 BAD_REQUEST — {"Message":"no proper deviceId provided"}
+2026-04-13 16:41:40.688 ERROR [http-nio-8000-exec-6] r.v.h.e.GlobalExceptionHandler : MEDOM proxy error: MEDOM CreateSession failed: HTTP 400 — {"Message":"no proper deviceId provided"}
+ru.vitappio.holter.exception.MedomProxyException: MEDOM CreateSession failed: HTTP 400 — {"Message":"no proper deviceId provided"}
+	at ru.vitappio.holter.service.MedomService.lambda$handleResponse$3(MedomService.java:83)
+	at reactor.core.publisher.MonoFlatMap$FlatMapMain.onNext(MonoFlatMap.java:132)
+	at reactor.core.publisher.FluxDefaultIfEmpty$DefaultIfEmptySubscriber.onNext(FluxDefaultIfEmpty.java:122)
+	at reactor.core.publisher.FluxOnAssembly$OnAssemblySubscriber.onNext(FluxOnAssembly.java:539)
+	at reactor.core.publisher.FluxMapFuseable$MapFuseableSubscriber.onNext(FluxMapFuseable.java:129)
+	at reactor.core.publisher.FluxContextWrite$ContextWriteSubscriber.onNext(FluxContextWrite.java:107)
+	at reactor.core.publisher.FluxMapFuseable$MapFuseableConditionalSubscriber.onNext(FluxMapFuseable.java:299)
+	at reactor.core.publisher.FluxFilterFuseable$FilterFuseableConditionalSubscriber.onNext(FluxFilterFuseable.java:337)
+	at reactor.core.publisher.Operators$BaseFluxToMonoOperator.completePossiblyEmpty(Operators.java:2097)
+	at reactor.core.publisher.MonoCollect$CollectSubscriber.onComplete(MonoCollect.java:145)
+	at reactor.core.publisher.FluxMap$MapSubscriber.onComplete(FluxMap.java:144)
+	at reactor.core.publisher.FluxPeek$PeekSubscriber.onComplete(FluxPeek.java:260)
+	at reactor.core.publisher.FluxMap$MapSubscriber.onComplete(FluxMap.java:144)
+	at reactor.netty.channel.FluxReceive.onInboundComplete(FluxReceive.java:415)
+	at reactor.netty.channel.ChannelOperations.onInboundComplete(ChannelOperations.java:445)
+	at reactor.netty.channel.ChannelOperations.terminate(ChannelOperations.java:499)
+	at reactor.netty.http.client.HttpClientOperations.onInboundNext(HttpClientOperations.java:800)
+	at reactor.netty.channel.ChannelOperationsHandler.channelRead(ChannelOperationsHandler.java:115)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:289)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:442)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:436)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:346)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:318)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:251)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:442)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.handler.ssl.SslHandler.unwrap(SslHandler.java:1503)
+	at io.netty.handler.ssl.SslHandler.decodeJdkCompatible(SslHandler.java:1366)
+	at io.netty.handler.ssl.SslHandler.decode(SslHandler.java:1415)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:530)
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:469)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:290)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1357)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:868)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:166)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:104)
+		at reactor.core.publisher.Mono.block(Mono.java:1779)
+		at ru.vitappio.holter.service.MedomService.createSession(MedomService.java:220)
+		at ru.vitappio.holter.controller.MedomController.createSession(MedomController.java:88)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+		at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255)
+		at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188)
+		at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926)
+		at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831)
+		at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+		at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+		at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+		at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+		at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+		at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at ru.vitappio.holter.config.RequestLoggingConfig$1.doFilterInternal(RequestLoggingConfig.java:30)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+		at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+		at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+		at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+		at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+		at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+		at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+		at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+		at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+		at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+		at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+		at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384)
+		at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+		at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+		at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+		at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+		at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+		at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+		... 1 common frames omitted
+2026-04-13 16:41:40.709 INFO  [http-nio-8000-exec-6] http.access : POST /medom/sessions 502 — 371ms

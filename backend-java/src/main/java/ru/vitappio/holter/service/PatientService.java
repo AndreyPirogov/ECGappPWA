@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ru.vitappio.holter.dto.ConclusionUploadRequest;
 import ru.vitappio.holter.dto.PatientCreateRequest;
-import ru.vitappio.holter.exception.NotFoundException;
 
 import java.time.Instant;
 import java.util.Map;
@@ -34,14 +33,24 @@ public class PatientService {
         return Map.of("patient_id", patientId, "patient", patient);
     }
 
+    public void registerExternalPatient(String patientId, String fullName, String birthDate, String gender) {
+        patients.computeIfAbsent(patientId, id -> {
+            var patient = new ConcurrentHashMap<String, Object>();
+            patient.put("id", id);
+            patient.put("full_name", fullName != null ? fullName : "");
+            patient.put("birth_date", birthDate != null ? birthDate : "");
+            patient.put("gender", gender != null ? gender : "");
+            patient.put("created_at", Instant.now().toString());
+            return patient;
+        });
+    }
+
     public boolean exists(String patientId) {
         return patients.containsKey(patientId);
     }
 
     public Map<String, Object> uploadConclusion(String patientId, ConclusionUploadRequest req) {
-        if (!patients.containsKey(patientId)) {
-            throw new NotFoundException("Patient not found");
-        }
+        registerExternalPatient(patientId, "", "", "");
         var conclusion = new ConcurrentHashMap<String, Object>();
         conclusion.put("patient_id", patientId);
         conclusion.put("html_content", req.htmlContent());
@@ -54,9 +63,6 @@ public class PatientService {
     }
 
     public Map<String, Object> getConclusion(String patientId) {
-        if (!patients.containsKey(patientId)) {
-            throw new NotFoundException("Patient not found");
-        }
         var conclusion = conclusions.get(patientId);
         if (conclusion == null) {
             return Map.of("ready", false);

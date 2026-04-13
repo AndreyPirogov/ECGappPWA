@@ -7,7 +7,6 @@ import ru.vitappio.holter.dto.DiaryEventCreateRequest;
 import ru.vitappio.holter.dto.SessionCreateRequest;
 import ru.vitappio.holter.dto.SessionFinishRequest;
 import ru.vitappio.holter.exception.BadRequestException;
-import ru.vitappio.holter.exception.NotFoundException;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -39,10 +38,8 @@ public class SessionService {
     }
 
     public Map<String, Object> getStatus(String sessionId) {
+        registerExternalSession(sessionId, "");
         var session = sessions.get(sessionId);
-        if (session == null) {
-            throw new NotFoundException("Session not found");
-        }
 
         long elapsed = Duration.between(
                 Instant.parse((String) session.get("started_at")),
@@ -66,9 +63,7 @@ public class SessionService {
     }
 
     public Map<String, Object> addEvent(String sessionId, DiaryEventCreateRequest req) {
-        if (!sessions.containsKey(sessionId)) {
-            throw new NotFoundException("Session not found");
-        }
+        registerExternalSession(sessionId, "");
         if (!sessionId.equals(req.sessionId())) {
             throw new BadRequestException("session_id mismatch");
         }
@@ -87,17 +82,13 @@ public class SessionService {
     }
 
     public Map<String, Object> listEvents(String sessionId) {
-        if (!sessions.containsKey(sessionId)) {
-            throw new NotFoundException("Session not found");
-        }
+        registerExternalSession(sessionId, "");
         return Map.of("items", sessionEvents.getOrDefault(sessionId, List.of()));
     }
 
     public Map<String, Object> finishSession(String sessionId, SessionFinishRequest req) {
+        registerExternalSession(sessionId, "");
         var session = sessions.get(sessionId);
-        if (session == null) {
-            throw new NotFoundException("Session not found");
-        }
         session.put("status", "finished");
         session.put("finished_at", Instant.now().toString());
         session.put("finish_reason", req.reason() != null ? req.reason() : "");
@@ -107,5 +98,18 @@ public class SessionService {
 
     public boolean exists(String sessionId) {
         return sessions.containsKey(sessionId);
+    }
+
+    public void registerExternalSession(String sessionId, String patientId) {
+        sessions.computeIfAbsent(sessionId, id -> {
+            var session = new ConcurrentHashMap<String, Object>();
+            session.put("id", id);
+            session.put("patient_id", patientId != null ? patientId : "");
+            session.put("device_serial", "");
+            session.put("started_at", Instant.now().toString());
+            session.put("status", "running");
+            return session;
+        });
+        sessionEvents.computeIfAbsent(sessionId, id -> new CopyOnWriteArrayList<>());
     }
 }
