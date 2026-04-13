@@ -853,6 +853,21 @@ h3 {
   color: var(--accent);
 }
 
+.dg-b-active {
+  border-color: var(--accent);
+  background: var(--accent-l);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.dg-status {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 2px;
+  min-height: 14px;
+}
+
 .de {
   display: flex;
   align-items: center;
@@ -875,6 +890,22 @@ h3 {
   font-family: var(--fui);
   font-weight: 600;
   font-size: 14px;
+}
+
+.de-active {
+  border-color: var(--accent);
+  background: var(--accent-l);
+}
+
+.de-live {
+  color: var(--accent);
+  font-size: 11px;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
 .de-emp {

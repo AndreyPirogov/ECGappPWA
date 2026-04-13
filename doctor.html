@@ -15,22 +15,44 @@
             <span class="hdr-name">Кабинет врача</span>
           </div>
         </div>
-        <div class="st-line" id="doctorStatus">Готово</div>
+        <div class="st-line" id="doctorStatus">Авторизуйтесь для работы</div>
       </header>
 
       <main class="mn">
-        <section class="scr on">
-          <h2>Загрузка заключения (HTML)</h2>
-          <p class="sub">После загрузки пациент сможет получить заключение по ID пациента.</p>
+        <!-- LOGIN SCREEN -->
+        <section class="scr on" id="scr-login">
+          <h2>Авторизация</h2>
+          <p class="sub">Введите логин и пароль для доступа к кабинету врача.</p>
 
           <div class="fg">
-            <label class="fl" for="docApi">API URL</label>
-            <input class="fi" id="docApi" type="text" placeholder="http://localhost:8000" />
+            <label class="fl" for="authLogin">Логин <span class="rq">*</span></label>
+            <input class="fi" id="authLogin" type="text" placeholder="doctor" autocomplete="username" />
+          </div>
+          <div class="fg">
+            <label class="fl" for="authPassword">Пароль <span class="rq">*</span></label>
+            <input class="fi" id="authPassword" type="password" placeholder="••••••••" autocomplete="current-password" />
+          </div>
+          <div class="fg">
+            <label class="fl" for="authApi">URL Backend API</label>
+            <input class="fi" id="authApi" type="text" placeholder="http://127.0.0.1:8000" />
+          </div>
+
+          <button class="btn btn-p" id="btnLogin" type="button"><span class="bt">Войти</span></button>
+        </section>
+
+        <!-- MAIN SCREEN -->
+        <section class="scr" id="scr-main">
+          <h2>Загрузка заключения</h2>
+          <p class="sub">Укажите пациента и сессию, затем загрузите HTML-заключение.</p>
+
+          <div class="fg">
+            <label class="fl" for="docPatient">ID пациента <span class="rq">*</span></label>
+            <input class="fi" id="docPatient" type="text" placeholder="14451" />
           </div>
 
           <div class="fg">
-            <label class="fl" for="docPatient">ID пациента</label>
-            <input class="fi" id="docPatient" type="text" placeholder="p-xxxxxxxxxxxx" />
+            <label class="fl" for="docSession">ID сессии <span class="rq">*</span></label>
+            <input class="fi" id="docSession" type="text" placeholder="7392" />
           </div>
 
           <div class="fg">
@@ -44,37 +66,36 @@
           </div>
 
           <div class="fg">
-            <label class="fl" for="docHtml">HTML заключения</label>
+            <label class="fl" for="docHtml">HTML заключения <span class="rq">*</span></label>
             <textarea class="fi" id="docHtml" rows="14" placeholder="<h1>Заключение</h1><p>...</p>"></textarea>
           </div>
 
-          <button class="btn btn-p" id="docUploadBtn" type="button"><span class="bt">Загрузить заключение</span></button>
+          <button class="btn btn-p mb12" id="docUploadBtn" type="button"><span class="bt">Загрузить заключение</span></button>
+          <button class="btn btn-s" id="btnLogout" type="button"><span class="bt">Выйти</span></button>
         </section>
       </main>
     </div>
 
     <script>
       const statusEl = document.getElementById("doctorStatus");
-      const apiInput = document.getElementById("docApi");
-      const patientInput = document.getElementById("docPatient");
-      const doctorInput = document.getElementById("docName");
-      const fileInput = document.getElementById("docFile");
-      const htmlInput = document.getElementById("docHtml");
-      const uploadBtn = document.getElementById("docUploadBtn");
+      let API_BASE = "";
+      let AUTH_TOKEN = "";
 
       function setStatus(type, text) {
         const cls =
-          type === "ok"
-            ? " s-ok"
-            : type === "warn"
-              ? " s-warn"
-              : type === "err"
-                ? " s-err"
-                : type === "info"
-                  ? " s-info"
-                  : "";
+          type === "ok" ? " s-ok"
+            : type === "warn" ? " s-warn"
+            : type === "err" ? " s-err"
+            : type === "info" ? " s-info"
+            : "";
         statusEl.className = "st-line" + cls;
         statusEl.textContent = text;
+      }
+
+      function showScreen(id) {
+        document.querySelectorAll(".scr").forEach((s) => s.classList.remove("on"));
+        const el = document.getElementById(id);
+        if (el) el.classList.add("on");
       }
 
       (function () {
@@ -82,58 +103,105 @@
         const def =
           h === "localhost" || h === "127.0.0.1" || !h
             ? "http://127.0.0.1:8000"
-            : "https://medom.virtual-hospital.ru";
-        apiInput.value = localStorage.getItem("vitappio.apiBaseUrl") || def;
+            : location.origin;
+        document.getElementById("authApi").value =
+          localStorage.getItem("vitappio.doctor.apiUrl") || def;
       })();
 
-      fileInput.addEventListener("change", async () => {
-        const file = fileInput.files && fileInput.files[0];
-        if (!file) return;
-        htmlInput.value = await file.text();
+      // ── Login ──
+      document.getElementById("btnLogin").addEventListener("click", async () => {
+        const login = document.getElementById("authLogin").value.trim();
+        const password = document.getElementById("authPassword").value.trim();
+        const apiUrl = document.getElementById("authApi").value.trim().replace(/\/+$/, "");
+        const btn = document.getElementById("btnLogin");
+
+        if (!login || !password) { setStatus("err", "Введите логин и пароль"); return; }
+        if (!apiUrl) { setStatus("err", "Введите URL API"); return; }
+
+        btn.classList.add("ld");
+        btn.disabled = true;
+        setStatus("info", "Авторизация...");
+
+        try {
+          const resp = await fetch(apiUrl + "/doctor/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ login, password }),
+          });
+          if (!resp.ok) {
+            const body = await resp.text();
+            throw new Error(resp.status === 401 ? "Неверный логин или пароль" : "HTTP " + resp.status);
+          }
+          const data = await resp.json();
+          AUTH_TOKEN = data.token;
+          API_BASE = apiUrl;
+          localStorage.setItem("vitappio.doctor.apiUrl", apiUrl);
+          setStatus("ok", "Авторизация успешна");
+          showScreen("scr-main");
+        } catch (err) {
+          setStatus("err", err.message || "Ошибка авторизации");
+        } finally {
+          btn.classList.remove("ld");
+          btn.disabled = false;
+        }
       });
 
-      uploadBtn.addEventListener("click", async () => {
-        const api = apiInput.value.trim().replace(/\/+$/, "");
-        const patientId = patientInput.value.trim();
-        const doctorName = doctorInput.value.trim();
-        const htmlContent = htmlInput.value.trim();
+      // ── Logout ──
+      document.getElementById("btnLogout").addEventListener("click", () => {
+        AUTH_TOKEN = "";
+        setStatus("info", "Авторизуйтесь для работы");
+        showScreen("scr-login");
+      });
 
-        if (!api) {
-          setStatus("err", "Укажите API URL");
-          return;
-        }
-        if (!patientId) {
-          setStatus("err", "Укажите ID пациента");
-          return;
-        }
-        if (!htmlContent) {
-          setStatus("err", "Добавьте HTML заключение");
-          return;
-        }
+      // ── File load ──
+      document.getElementById("docFile").addEventListener("change", async () => {
+        const file = document.getElementById("docFile").files[0];
+        if (file) document.getElementById("docHtml").value = await file.text();
+      });
 
-        uploadBtn.classList.add("ld");
-        uploadBtn.disabled = true;
+      // ── Upload conclusion ──
+      document.getElementById("docUploadBtn").addEventListener("click", async () => {
+        const patientId = document.getElementById("docPatient").value.trim();
+        const sessionId = document.getElementById("docSession").value.trim();
+        const doctorName = document.getElementById("docName").value.trim();
+        const htmlContent = document.getElementById("docHtml").value.trim();
+        const btn = document.getElementById("docUploadBtn");
+
+        if (!patientId) { setStatus("err", "Укажите ID пациента"); return; }
+        if (!sessionId) { setStatus("err", "Укажите ID сессии"); return; }
+        if (!htmlContent) { setStatus("err", "Добавьте HTML заключение"); return; }
+
+        btn.classList.add("ld");
+        btn.disabled = true;
         setStatus("info", "Загрузка заключения...");
 
         try {
-          const response = await fetch(api + "/patients/" + encodeURIComponent(patientId) + "/conclusion", {
+          const url = API_BASE + "/doctor/patients/" + encodeURIComponent(patientId)
+            + "/sessions/" + encodeURIComponent(sessionId) + "/conclusion";
+          const resp = await fetch(url, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + AUTH_TOKEN,
+            },
             body: JSON.stringify({
               html_content: htmlContent,
               doctor_name: doctorName || null,
             }),
           });
-          if (!response.ok) {
-            throw new Error("HTTP " + response.status);
+          if (resp.status === 401) {
+            AUTH_TOKEN = "";
+            setStatus("err", "Сессия истекла, войдите заново");
+            showScreen("scr-login");
+            return;
           }
-          localStorage.setItem("vitappio.apiBaseUrl", api);
-          setStatus("ok", "Заключение успешно загружено");
-        } catch (error) {
-          setStatus("err", "Ошибка загрузки: " + (error && error.message ? error.message : "неизвестная"));
+          if (!resp.ok) throw new Error("HTTP " + resp.status);
+          setStatus("ok", "Заключение загружено для пациента " + patientId + ", сессия " + sessionId);
+        } catch (err) {
+          setStatus("err", "Ошибка: " + (err.message || "неизвестная"));
         } finally {
-          uploadBtn.classList.remove("ld");
-          uploadBtn.disabled = false;
+          btn.classList.remove("ld");
+          btn.disabled = false;
         }
       });
     </script>

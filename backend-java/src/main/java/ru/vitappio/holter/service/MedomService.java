@@ -193,6 +193,7 @@ public class MedomService {
                     .header("Cookie", cookieHeader())
                     .exchangeToMono(resp -> handleResponse(resp, "GetDevices"))
                     .block();
+            log.info("MEDOM GetDevices response ({} chars): {}", body == null ? 0 : body.length(), body);
             return mapper.readValue(body, List.class);
         } catch (MedomProxyException e) {
             throw e;
@@ -209,7 +210,8 @@ public class MedomService {
             form.add("deviceId", String.valueOf(deviceId));
             if (comment != null && !comment.isBlank()) form.add("comment", comment);
 
-            log.debug("MEDOM CreateSession request: patientId={}, deviceId={}, cookies={}", patientId, deviceId, cookieJar.keySet());
+            log.info("MEDOM CreateSession request: patientId={}, deviceId={}, form={}, cookies={}",
+                    patientId, deviceId, form.toSingleValueMap(), cookieJar.keySet());
 
             String body = webClient.post()
                     .uri("/CreateSession")
@@ -264,6 +266,9 @@ public class MedomService {
             form.add("start", start);
             if (finish != null && !finish.isBlank()) form.add("finish", finish);
 
+            log.info("MEDOM AddUserEvent request: sessionId={}, text={}, start={}, severity={}, finish={}",
+                    sessionId, text, start, severity, finish);
+
             String body = webClient.post()
                     .uri("/AddUserEvent")
                     .contentType(MediaType.APPLICATION_FORM_URLENCODED)
@@ -271,6 +276,12 @@ public class MedomService {
                     .body(BodyInserters.fromFormData(form))
                     .exchangeToMono(resp -> handleResponse(resp, "AddUserEvent"))
                     .block();
+            log.info("MEDOM AddUserEvent response: {}", body);
+            if (body != null && body.trim().startsWith("{")) {
+                var map = mapper.readValue(body, Map.class);
+                Object id = map.getOrDefault("Id", map.getOrDefault("id", map.getOrDefault("EventId", 0)));
+                return id instanceof Number ? ((Number) id).intValue() : Integer.parseInt(id.toString());
+            }
             return mapper.readValue(body, Integer.class);
         } catch (MedomProxyException e) {
             throw e;

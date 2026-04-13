@@ -32,26 +32,8 @@ function joinApiUrl(base, path) {
   return b + p;
 }
 
-function _obf(s) {
-  return btoa(unescape(encodeURIComponent(s))).split("").reverse().join("");
-}
-function _deobf(s) {
-  return decodeURIComponent(escape(atob(s.split("").reverse().join(""))));
-}
-function saveMedomCreds(login, password) {
-  localStorage.setItem("vitappio.medom.login", _obf(login));
-  localStorage.setItem("vitappio.medom.password", _obf(password));
-}
-function loadMedomCreds() {
-  try {
-    const l = localStorage.getItem("vitappio.medom.login");
-    const p = localStorage.getItem("vitappio.medom.password");
-    if (!l || !p) return null;
-    return { login: _deobf(l), password: _deobf(p) };
-  } catch { return null; }
-}
 function isMedomConfigured() {
-  return !!loadMedomCreds();
+  return true;
 }
 
 // ── Config ────────────────────────────────────────────────────
@@ -121,8 +103,6 @@ function coerceBackendUrlForPage(input) {
 const _storedApiBase = localStorage.getItem("vitappio.apiBaseUrl");
 let API_BASE_URL = "";
 let DEMO_MODE = !_storedApiBase;
-let medomCredsSynced = false;
-
 // ── SQLite Database ──────────────────────────────────────────
 
 let db = null;
@@ -184,6 +164,9 @@ async function initDatabase() {
     full_name TEXT NOT NULL,
     birth_date TEXT NOT NULL,
     gender TEXT NOT NULL,
+    email TEXT,
+    login_code TEXT,
+    password TEXT,
     medom_patient_id TEXT,
     server_patient_id TEXT,
     created_at TEXT DEFAULT (datetime('now'))
@@ -207,6 +190,7 @@ async function initDatabase() {
     session_id INTEGER NOT NULL,
     event_type TEXT NOT NULL,
     timestamp TEXT NOT NULL,
+    end_timestamp TEXT,
     synced INTEGER DEFAULT 0,
     FOREIGN KEY (session_id) REFERENCES sessions(id)
   )`);
@@ -220,6 +204,14 @@ async function initDatabase() {
     uploaded_at TEXT,
     FOREIGN KEY (session_id) REFERENCES patients(id)
   )`);
+
+  const migrate = (table, column, type) => {
+    try { db.run(`ALTER TABLE ${table} ADD COLUMN ${column} ${type}`); } catch (e) { /* already exists */ }
+  };
+  migrate("patients", "email", "TEXT");
+  migrate("patients", "login_code", "TEXT");
+  migrate("patients", "password", "TEXT");
+  migrate("diary_events", "end_timestamp", "TEXT");
 
   await saveDbToIndexedDB();
 }
@@ -243,6 +235,19 @@ function dbFindPatient(fullName, birthDate) {
   return obj;
 }
 
+function dbFindPatientByCredentials(loginCode, password) {
+  const rows = db.exec(
+    "SELECT * FROM patients WHERE login_code = ? AND password = ? LIMIT 1",
+    [loginCode.trim(), password]
+  );
+  if (!rows.length || !rows[0].values.length) return null;
+  const cols = rows[0].columns;
+  const vals = rows[0].values[0];
+  const obj = {};
+  cols.forEach((c, i) => (obj[c] = vals[i]));
+  return obj;
+}
+
 function dbGetPatientById(id) {
   const rows = db.exec("SELECT * FROM patients WHERE id = ? LIMIT 1", [id]);
   if (!rows.length || !rows[0].values.length) return null;
@@ -253,10 +258,26 @@ function dbGetPatientById(id) {
   return obj;
 }
 
-function dbCreatePatient(fullName, birthDate, gender) {
+function generateLoginCode(fullName) {
+  const parts = fullName.trim().toLowerCase().split(/\s+/);
+  const prefix = (parts[0] || "user").substring(0, 3);
+  const num = String(Math.floor(1000 + Math.random() * 9000));
+  return prefix + num;
+}
+
+function generatePassword() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
+  let pass = "";
+  for (let i = 0; i < 8; i++) pass += chars[Math.floor(Math.random() * chars.length)];
+  return pass;
+}
+
+function dbCreatePatient(fullName, birthDate, gender, email) {
+  const loginCode = generateLoginCode(fullName);
+  const password = generatePassword();
   db.run(
-    "INSERT INTO patients (full_name, birth_date, gender) VALUES (?, ?, ?)",
-    [fullName.trim(), birthDate, gender]
+    "INSERT INTO patients (full_name, birth_date, gender, email, login_code, password) VALUES (?, ?, ?, ?, ?, ?)",
+    [fullName.trim(), birthDate, gender, email || "", loginCode, password]
   );
   const idRes = db.exec("SELECT last_insert_rowid()");
   const id = idRes[0].values[0][0];
@@ -326,6 +347,13 @@ function dbAddDiaryEvent(sessionDbId, eventType, timestamp) {
     [sessionDbId, eventType, timestamp]
   );
   dbSave();
+  const idRes = db.exec("SELECT last_insert_rowid()");
+  return idRes[0].values[0][0];
+}
+
+function dbEndDiaryEvent(eventDbId, endTimestamp) {
+  db.run("UPDATE diary_events SET end_timestamp = ? WHERE id = ?", [endTimestamp, eventDbId]);
+  dbSave();
 }
 
 function dbGetDiaryEvents(sessionDbId) {
@@ -382,7 +410,6 @@ const screenMap = {
   diary: "scr-diary",
   finish: "scr-finish",
   done: "scr-finish-done",
-  settings: "scr-settings",
 };
 
 const WZ_STEPS = [
@@ -412,7 +439,7 @@ const state = {
   wzStep: 1,
   modemOk: false,
   diary: [],
-  checkSec: 100,
+  checkSec: 180,
   timerInterval: null,
   checkPollInterval: null,
   modemBootInProgress: false,
@@ -491,7 +518,7 @@ function goTo(name) {
   }
 
   if (name === "check") {
-    state.checkSec = 100;
+    state.checkSec = 180;
     resetCheckUI();
   } else {
     stopAllChecks();
@@ -513,7 +540,6 @@ function goTo(name) {
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
 
-  if (name === "settings") loadSettingsScreen();
   if (name === "wizard") {
     state.wzStep = 1;
     state.modemOk = false;
@@ -546,24 +572,24 @@ function goTo(name) {
 // ── Auth / Login / Register ──────────────────────────────────
 
 function loginPatient() {
-  const nameEl = document.getElementById("fLoginName");
-  const dobEl = document.getElementById("fLoginDob");
+  const loginEl = document.getElementById("fLoginCode");
+  const passEl = document.getElementById("fLoginPass");
   const errBox = document.getElementById("loginError");
   const errText = document.getElementById("loginErrorText");
   let valid = true;
 
-  [nameEl, dobEl].forEach((f) => f && f.classList.remove("er"));
+  [loginEl, passEl].forEach((f) => f && f.classList.remove("er"));
   document.querySelectorAll("#scr-login .fe").forEach((e) => e.classList.remove("vis"));
   if (errBox) errBox.style.display = "none";
 
-  if (!nameEl.value.trim()) {
-    nameEl.classList.add("er");
-    document.getElementById("fLoginNameErr").classList.add("vis");
+  if (!loginEl.value.trim()) {
+    loginEl.classList.add("er");
+    document.getElementById("fLoginCodeErr").classList.add("vis");
     valid = false;
   }
-  if (!dobEl.value) {
-    dobEl.classList.add("er");
-    document.getElementById("fLoginDobErr").classList.add("vis");
+  if (!passEl.value.trim()) {
+    passEl.classList.add("er");
+    document.getElementById("fLoginPassErr").classList.add("vis");
     valid = false;
   }
   if (!valid) {
@@ -571,11 +597,11 @@ function loginPatient() {
     return;
   }
 
-  const patient = dbFindPatient(nameEl.value.trim(), dobEl.value);
+  const patient = dbFindPatientByCredentials(loginEl.value.trim(), passEl.value.trim());
   if (!patient) {
     if (errBox) errBox.style.display = "block";
-    if (errText) errText.textContent = "Пациент не найден. Проверьте данные или зарегистрируйтесь.";
-    setStatus("err", "Пациент не найден");
+    if (errText) errText.textContent = "Неверный логин или пароль. Проверьте данные или зарегистрируйтесь.";
+    setStatus("err", "Неверный логин или пароль");
     return;
   }
 
@@ -607,9 +633,20 @@ function activatePatient(patient) {
     const events = dbGetDiaryEvents(activeSession.id);
     state.diary = events.map((e) => {
       const d = new Date(e.timestamp);
+      const startTime = String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+      let endTime = null;
+      if (e.end_timestamp) {
+        const ed = new Date(e.end_timestamp);
+        endTime = String(ed.getHours()).padStart(2, "0") + ":" + String(ed.getMinutes()).padStart(2, "0");
+      }
       return {
         type: e.event_type,
-        time: String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0"),
+        startTime,
+        endTime,
+        startIso: e.timestamp,
+        endIso: e.end_timestamp || null,
+        dbId: e.id,
+        isDuration: isDurationEvent(e.event_type),
       };
     });
   } else {
@@ -665,7 +702,9 @@ function registerPatient() {
 
   const fullName = name.value.trim();
   const parts = fullName.split(/\s+/);
-  const patientDbId = dbCreatePatient(fullName, dob.value, sex.value);
+  const emailEl = document.getElementById("fEmail");
+  const email = emailEl ? emailEl.value.trim() : "";
+  const patientDbId = dbCreatePatient(fullName, dob.value, sex.value, email);
 
   const finishRegistration = (serverId, medomId) => {
     if (serverId || medomId) {
@@ -679,8 +718,8 @@ function registerPatient() {
 
     const credLogin = document.getElementById("credLogin");
     const credPass = document.getElementById("credPassword");
-    if (credLogin) credLogin.textContent = fullName;
-    if (credPass) credPass.textContent = dob.value;
+    if (credLogin) credLogin.textContent = patient.login_code;
+    if (credPass) credPass.textContent = patient.password;
 
     goTo("credentials");
   };
@@ -1116,11 +1155,9 @@ function createSessionFlow() {
 function resetCheckUI() {
   stopAllChecks();
   const td = document.getElementById("timerDisplay");
-  if (td) { td.textContent = "01:40"; td.className = "tmr"; }
-  ["ciSignal", "ciLink", "ciPower"].forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.className = "ci pd";
-  });
+  if (td) { td.textContent = "03:00"; td.className = "tmr"; }
+  const ci = document.getElementById("ciCharge");
+  if (ci) ci.className = "ci pd";
   const detail = document.getElementById("checkDetail");
   if (detail) detail.textContent = "";
 }
@@ -1128,7 +1165,7 @@ function resetCheckUI() {
 function startCheckFlow() {
   if (state.timerInterval) return;
   setStatus("info", "Проверка готовности...");
-  state.checkSec = 100;
+  state.checkSec = 180;
 
   state.timerInterval = setInterval(() => {
     state.checkSec -= 1;
@@ -1143,7 +1180,7 @@ function startCheckFlow() {
     const td = document.getElementById("timerDisplay");
     if (td) {
       td.textContent = m + ":" + s;
-      td.className = "tmr" + (state.checkSec <= 20 ? " td" : state.checkSec <= 40 ? " tw" : "");
+      td.className = "tmr" + (state.checkSec <= 30 ? " td" : state.checkSec <= 60 ? " tw" : "");
     }
   }, 1000);
 
@@ -1154,28 +1191,32 @@ function startCheckFlow() {
       return;
     }
     try {
-      const status = await getSessionStatus(state.sessionId);
-      const signalOk = Boolean(status.signal_ok ?? status.signal);
-      const batteryOk = Boolean(status.battery_ok ?? status.battery);
-      const linkOk = Boolean(status.link_ok ?? status.connected);
-      const allReady = Boolean(status.ready) || (signalOk && batteryOk && linkOk);
-
-      setCheckClass("ciSignal", signalOk ? "ok" : "pd");
-      setCheckClass("ciLink", linkOk ? "ok" : "pd");
-      setCheckClass("ciPower", batteryOk ? "ok" : "pd");
+      const sessions = await getMedomSessionInfo(state.sessionId);
+      const session = Array.isArray(sessions) && sessions.length > 0 ? sessions[0] : null;
 
       const detail = document.getElementById("checkDetail");
-      if (detail) {
-        detail.textContent =
-          "Сигнал: " + (signalOk ? "OK" : "…") +
-          " · Связь: " + (linkOk ? "OK" : "…") +
-          " · Заряд: " + (batteryOk ? "OK" : "…");
+      const ci = document.getElementById("ciCharge");
+
+      if (!session) {
+        if (detail) detail.textContent = "Сессия не найдена в MEDOM";
+        if (ci) ci.className = "ci pd";
+        return;
       }
 
-      if (allReady) {
+      const charge = session.CardioCharge ?? session.cardio_charge ?? null;
+      const chargeOk = charge != null && charge !== "" && charge !== 0;
+
+      if (ci) ci.className = "ci " + (chargeOk ? "ok" : "pd");
+      if (detail) {
+        detail.textContent = chargeOk
+          ? "CardioCharge: " + charge
+          : "Ожидание данных от прибора…";
+      }
+
+      if (chargeOk) {
         stopAllChecks();
-        setStatus("ok", "Все проверки пройдены");
-        toast("Проверка пройдена");
+        setStatus("ok", "Проверка пройдена");
+        toast("Прибор подключён, данные поступают");
         setTimeout(() => goTo("success"), 500);
       }
     } catch (err) {
@@ -1185,29 +1226,9 @@ function startCheckFlow() {
   };
 
   poll();
-  state.checkPollInterval = setInterval(poll, 5000);
+  state.checkPollInterval = setInterval(poll, 10000);
 }
 
-function setCheckClass(id, stateName) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.className = "ci " + (stateName === "ok" ? "ok" : stateName === "fl" ? "fl" : "pd");
-}
-
-function simulateCheck(success) {
-  stopAllChecks();
-  if (success) {
-    ["ciSignal", "ciLink", "ciPower"].forEach((id) => setCheckClass(id, "ok"));
-    setStatus("ok", "Все проверки пройдены (симуляция)");
-    toast("Проверка пройдена");
-    setTimeout(() => goTo("success"), 400);
-  } else {
-    setCheckClass("ciSignal", "fl");
-    setCheckClass("ciLink", "fl");
-    setStatus("err", "Ошибка проверки (симуляция)");
-    setTimeout(() => goTo("fail"), 400);
-  }
-}
 
 function stopAllChecks() {
   if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
@@ -1216,52 +1237,99 @@ function stopAllChecks() {
 
 // ── Diary ────────────────────────────────────────────────────
 
+function formatTime(date) {
+  return String(date.getHours()).padStart(2, "0") + ":" + String(date.getMinutes()).padStart(2, "0");
+}
+
+function isDurationEvent(type) {
+  const btn = document.querySelector('#diaryGrid .dg-b[data-diary="' + type + '"]');
+  return btn ? btn.hasAttribute("data-duration") : false;
+}
+
+function findActiveEvent(type) {
+  return state.diary.find((e) => e.type === type && !e.endTime && e.isDuration);
+}
+
 function addDiaryEntry(type) {
+  if (isDurationEvent(type)) {
+    const active = findActiveEvent(type);
+    if (active) {
+      endDiaryEntry(active);
+    } else {
+      startDiaryEntry(type);
+    }
+  } else {
+    addInstantEntry(type);
+  }
+}
+
+function addInstantEntry(type) {
   const now = new Date();
-  const time = String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
-  state.diary.unshift({ type, time });
-  renderDiary();
+  const startTime = formatTime(now);
+  const startIso = now.toISOString();
 
-  const timestamp = now.toISOString();
-
+  let dbId = null;
   if (state.currentSessionDbId) {
-    dbAddDiaryEvent(state.currentSessionDbId, type, timestamp);
+    dbId = dbAddDiaryEvent(state.currentSessionDbId, type, startIso);
   }
 
+  state.diary.unshift({ type, startTime, endTime: null, startIso, endIso: null, dbId, isDuration: false });
+  renderDiary();
+
+  sendEvent(type, startIso, null);
+  setStatus("ok", type + " — записано");
+  toast(type + " — записано");
+}
+
+function startDiaryEntry(type) {
+  const now = new Date();
+  const startTime = formatTime(now);
+  const startIso = now.toISOString();
+
+  let dbId = null;
+  if (state.currentSessionDbId) {
+    dbId = dbAddDiaryEvent(state.currentSessionDbId, type, startIso);
+  }
+
+  state.diary.unshift({ type, startTime, endTime: null, startIso, endIso: null, dbId, isDuration: true });
+  renderDiary();
+  setStatus("info", type + " — начало");
+  toast(type + " — начало");
+}
+
+function endDiaryEntry(entry) {
+  const now = new Date();
+  entry.endTime = formatTime(now);
+  entry.endIso = now.toISOString();
+
+  if (entry.dbId) {
+    dbEndDiaryEvent(entry.dbId, entry.endIso);
+  }
+
+  renderDiary();
+
+  sendEvent(entry.type, entry.startIso, entry.endIso);
+  setStatus("ok", entry.type + " — завершено");
+  toast(entry.type + " — завершено");
+}
+
+function sendEvent(type, startIso, endIso) {
+  const payload = { session_id: state.sessionId, event_type: type, timestamp: startIso, end_timestamp: endIso };
   if (isMedomConfigured() && state.sessionId) {
-    addEventMedom({
+    const medomPayload = {
       session_id: parseInt(state.sessionId, 10),
       text: type,
-      start: timestamp,
+      start: startIso,
       severity: "Low",
-    })
-      .then(() => {
-        setStatus("ok", type + " записан в дневник");
-        toast(type + " — записано");
-      })
-      .catch(() => {
-        queueDiaryEvent({ session_id: state.sessionId, event_type: type, timestamp });
-        setStatus("warn", "Ошибка отправки, событие в очереди");
-        toast(type + " — в очереди");
-      });
+    };
+    if (endIso) medomPayload.finish = endIso;
+    addEventMedom(medomPayload).catch(() => {
+      queueDiaryEvent(payload);
+    });
   } else if (!DEMO_MODE) {
-    pushDiaryEvent({ session_id: state.sessionId, event_type: type, timestamp })
-      .then(() => {
-        if (!navigator.onLine) {
-          setStatus("warn", "Событие сохранено в очередь (офлайн)");
-        } else {
-          setStatus("ok", type + " записан в дневник");
-        }
-        toast(type + " — записано");
-      })
-      .catch(() => {
-        queueDiaryEvent({ session_id: state.sessionId, event_type: type, timestamp });
-        setStatus("warn", "Нет сети: событие в очереди");
-        toast(type + " — в очереди");
-      });
-  } else {
-    setStatus("ok", type + " записан в дневник");
-    toast(type + " — записано");
+    pushDiaryEvent(payload).catch(() => {
+      queueDiaryEvent(payload);
+    });
   }
 }
 
@@ -1270,16 +1338,74 @@ function renderDiary() {
   if (!el) return;
   if (state.diary.length === 0) {
     el.innerHTML = '<div class="de-emp">Записей пока нет. Отметьте событие выше.</div>';
-    refreshIcons();
-    return;
+  } else {
+    el.innerHTML = state.diary
+      .map((e) => {
+        const isActive = e.isDuration && !e.endTime;
+        let timeText;
+        if (!e.isDuration) {
+          timeText = e.startTime;
+        } else if (isActive) {
+          timeText = e.startTime + " — …";
+        } else {
+          timeText = e.startTime + " — " + e.endTime;
+        }
+        return '<div class="de' + (isActive ? " de-active" : "") + '">' +
+          '<span class="de-t">' + timeText + '</span>' +
+          '<span class="de-n">' + e.type + (isActive ? ' <span class="de-live">▶</span>' : "") + "</span></div>";
+      })
+      .join("");
   }
-  el.innerHTML = state.diary
-    .map(
-      (e) =>
-        '<div class="de"><span class="de-t">' + e.time + '</span><span class="de-n">' + e.type + "</span></div>"
-    )
-    .join("");
+
+  document.querySelectorAll("#diaryGrid .dg-b[data-duration]").forEach((btn) => {
+    const type = btn.getAttribute("data-diary");
+    const active = type && findActiveEvent(type);
+    const statusEl = btn.querySelector(".dg-status");
+    btn.classList.toggle("dg-b-active", !!active);
+    if (statusEl) {
+      statusEl.textContent = active ? "с " + active.startTime + " ▶ Стоп" : "";
+    }
+  });
+
   refreshIcons();
+  refreshDeviceStatus();
+}
+
+async function refreshDeviceStatus() {
+  if (!state.sessionId) return;
+  const card = document.getElementById("deviceStatusCard");
+  const chargeEl = document.getElementById("deviceCharge");
+  const lastSeenEl = document.getElementById("deviceLastSeen");
+  if (!card) return;
+
+  try {
+    const sessions = await getMedomSessionInfo(state.sessionId);
+    const session = Array.isArray(sessions) && sessions.length > 0 ? sessions[0] : null;
+    if (!session) return;
+
+    const charge = session.CardioCharge ?? session.cardio_charge ?? null;
+    const lastFile = session.LastFileEnd ?? session.last_file_end ?? null;
+
+    card.style.display = "block";
+
+    if (chargeEl) {
+      chargeEl.textContent = charge != null && charge !== "" ? charge + "%" : "нет данных";
+    }
+    if (lastSeenEl) {
+      if (lastFile) {
+        const d = new Date(lastFile);
+        const isValid = !isNaN(d.getTime());
+        lastSeenEl.textContent = isValid
+          ? d.toLocaleDateString("ru-RU") + " " + d.toLocaleTimeString("ru-RU", { hour: "2-digit", minute: "2-digit" })
+          : lastFile;
+      } else {
+        lastSeenEl.textContent = "нет данных";
+      }
+    }
+    refreshIcons();
+  } catch (err) {
+    console.error("Failed to load device status:", err);
+  }
 }
 
 // ── Finish session ───────────────────────────────────────────
@@ -1386,76 +1512,6 @@ function resetToHome() {
   }
 }
 
-// ── Settings ─────────────────────────────────────────────────
-
-function loadSettingsScreen() {
-  const creds = loadMedomCreds();
-  const loginEl = document.getElementById("fMedomLogin");
-  const passEl = document.getElementById("fMedomPass");
-  const urlEl = document.getElementById("fBackendUrl");
-  if (creds && loginEl) loginEl.value = creds.login;
-  if (creds && passEl) passEl.value = creds.password;
-  if (urlEl) urlEl.value = API_BASE_URL || "";
-}
-
-async function connectMedom() {
-  const loginEl = document.getElementById("fMedomLogin");
-  const passEl = document.getElementById("fMedomPass");
-  const urlEl = document.getElementById("fBackendUrl");
-  const statusBox = document.getElementById("medomStatus");
-  const statusText = document.getElementById("medomStatusText");
-  const btn = document.getElementById("btnMedomSave");
-  if (!loginEl || !passEl || !urlEl) return;
-
-  const backendUrl = coerceBackendUrlForPage(urlEl.value);
-  if (urlEl.value.trim().replace(/\/+$/, "") !== backendUrl) {
-    urlEl.value = backendUrl;
-  }
-  const login = loginEl.value.trim();
-  const password = passEl.value.trim();
-
-  if (!backendUrl) { setStatus("err", "Введите URL Backend API"); return; }
-  if (!login || !password) { setStatus("err", "Введите логин и пароль"); return; }
-
-  API_BASE_URL = backendUrl;
-  DEMO_MODE = false;
-  localStorage.setItem("vitappio.apiBaseUrl", backendUrl);
-
-  btn.classList.add("ld");
-  btn.disabled = true;
-  if (statusBox) statusBox.style.display = "none";
-
-  try {
-    const result = await saveMedomCredsToBackend(login, password);
-    medomCredsSynced = true;
-    saveMedomCreds(login, password);
-
-    if (statusBox) statusBox.style.display = "block";
-    if (result.is_auth) {
-      if (statusText) statusText.textContent = "Подключено. Пользователь: " + (result.user || login);
-      statusBox.style.background = "var(--ok-bg)";
-      statusBox.style.borderColor = "#86efac";
-      setStatus("ok", "MEDOM подключён");
-      toast("Подключение к MEDOM успешно");
-    } else {
-      if (statusText) statusText.textContent = "Авторизация не прошла. Проверьте логин и пароль.";
-      statusBox.style.background = "var(--err-bg)";
-      statusBox.style.borderColor = "#fca5a5";
-      setStatus("err", "Ошибка авторизации MEDOM");
-    }
-  } catch (err) {
-    if (statusBox) {
-      statusBox.style.display = "block";
-      statusBox.style.background = "var(--err-bg)";
-      statusBox.style.borderColor = "#fca5a5";
-    }
-    if (statusText) statusText.textContent = "Ошибка: " + getErrorText(err);
-    setStatus("err", "Не удалось подключиться к MEDOM");
-  } finally {
-    btn.classList.remove("ld");
-    btn.disabled = false;
-  }
-}
 
 // ── API layer ────────────────────────────────────────────────
 
@@ -1562,31 +1618,9 @@ async function flushDiaryQueue() {
 
 // ── MEDOM API ────────────────────────────────────────────────
 
-async function syncMedomCredentials() {
-  const creds = loadMedomCreds();
-  if (!creds) throw new Error("Настройте подключение к MEDOM в разделе «Настройки».");
-  await saveMedomCredsToBackend(creds.login, creds.password);
-  medomCredsSynced = true;
-}
-
-async function ensureMedomCredentialsOnBackend() {
-  if (DEMO_MODE) return;
-  if (medomCredsSynced) return;
-  await syncMedomCredentials();
-}
 
 async function medomRequest(fn) {
-  await ensureMedomCredentialsOnBackend();
-  try {
-    return await fn();
-  } catch (err) {
-    if (err && /credentials not configured/i.test(err.message) && loadMedomCreds()) {
-      medomCredsSynced = false;
-      await syncMedomCredentials();
-      return await fn();
-    }
-    throw err;
-  }
+  return await fn();
 }
 
 async function createPatientMedom(payload) {
@@ -1604,11 +1638,8 @@ async function addEventMedom(payload) {
 async function getMedomDevices() {
   return medomRequest(() => apiRequest("/medom/devices", { method: "GET" }));
 }
-async function saveMedomCredsToBackend(login, password) {
-  return apiRequest("/medom/credentials", { method: "POST", body: { login, password } });
-}
-async function pingMedom() {
-  return apiRequest("/medom/ping", { method: "GET" });
+async function getMedomSessionInfo(sessionId) {
+  return medomRequest(() => apiRequest("/medom/sessions?sessionId=" + encodeURIComponent(sessionId), { method: "GET" }));
 }
 
 function extractDeviceId(d) {
@@ -1724,8 +1755,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("btnWzBack").addEventListener("click", wzBack);
   document.getElementById("btnWzNext").addEventListener("click", wzNext);
   document.getElementById("btnRetryCheck").addEventListener("click", () => goTo("check"));
-  document.getElementById("btnSimOk").addEventListener("click", () => simulateCheck(true));
-  document.getElementById("btnSimFail").addEventListener("click", () => simulateCheck(false));
 
   // Diary / Finish
   document.getElementById("btnOpenDiary").addEventListener("click", () => goTo("diary"));
@@ -1738,15 +1767,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("btnCheckConclusion").addEventListener("click", () => renderConclusionScreen(true));
   document.getElementById("btnReset").addEventListener("click", resetToHome);
 
-  // Settings
-  document.getElementById("btnSettings").addEventListener("click", () => goTo("settings"));
-  document.getElementById("bkSettings").addEventListener("click", () => goTo(state.prevScreen || "auth"));
-  document.getElementById("btnMedomSave").addEventListener("click", connectMedom);
 
-  // Debug
-  document.getElementById("dbgToggle").addEventListener("click", function () {
-    document.getElementById("dbgPanel").classList.toggle("op");
-  });
 
   // Prep checklist
   document.getElementById("prepCheck").addEventListener("click", (e) => {

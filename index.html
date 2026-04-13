@@ -32,7 +32,6 @@
               <span class="net-dot" id="netDot"></span>
               <span id="netText">Онлайн</span>
             </div>
-            <button class="hdr-settings" type="button" id="btnSettings" title="Настройки"><i data-lucide="settings" style="width:18px;height:18px"></i></button>
           </div>
         </div>
         <div class="st-line" id="stLine">Готов к работе</div>
@@ -76,17 +75,17 @@
         <section class="scr" id="scr-login" aria-label="Вход">
           <button class="bk" type="button" id="bkLogin"><i data-lucide="arrow-left" style="width: 16px; height: 16px"></i> Назад</button>
           <h2>Вход</h2>
-          <p class="sub">Введите ваши данные для поиска учётной записи.</p>
+          <p class="sub">Введите логин и пароль, полученные при регистрации.</p>
 
           <div class="fg">
-            <label class="fl" for="fLoginName">ФИО <span class="rq">*</span></label>
-            <input class="fi" id="fLoginName" type="text" placeholder="Иванов Иван Иванович" autocomplete="name" />
-            <div class="fe" id="fLoginNameErr">Укажите ФИО</div>
+            <label class="fl" for="fLoginCode">Логин <span class="rq">*</span></label>
+            <input class="fi" id="fLoginCode" type="text" placeholder="ива4821" autocomplete="username" />
+            <div class="fe" id="fLoginCodeErr">Укажите логин</div>
           </div>
           <div class="fg">
-            <label class="fl" for="fLoginDob">Дата рождения <span class="rq">*</span></label>
-            <input class="fi" id="fLoginDob" type="date" />
-            <div class="fe" id="fLoginDobErr">Укажите дату рождения</div>
+            <label class="fl" for="fLoginPass">Пароль <span class="rq">*</span></label>
+            <input class="fi" id="fLoginPass" type="password" placeholder="••••••••" autocomplete="current-password" />
+            <div class="fe" id="fLoginPassErr">Укажите пароль</div>
           </div>
 
           <button class="btn btn-p" id="btnLogin" type="button"><span class="bt">Войти</span></button>
@@ -214,6 +213,10 @@
             </select>
             <div class="fe" id="fSexErr">Укажите пол</div>
           </div>
+          <div class="fg">
+            <label class="fl" for="fEmail">Email <span class="sm">(необязательно)</span></label>
+            <input class="fi" id="fEmail" type="email" placeholder="patient@example.com" autocomplete="email" />
+          </div>
 
           <button class="btn btn-p" id="btnReg" type="button"><span class="bt">Зарегистрировать пациента</span></button>
         </section>
@@ -229,12 +232,12 @@
           <div class="cd mb12">
             <h3 style="margin-bottom: 12px">Ваши данные для входа</h3>
             <div class="fg" style="margin-bottom: 10px">
-              <label class="fl">Логин (ФИО)</label>
-              <div class="fi" id="credLogin" style="background:var(--bg);user-select:all;cursor:text"></div>
+              <label class="fl">Логин</label>
+              <div class="fi" id="credLogin" style="background:var(--bg);user-select:all;cursor:text;font-family:monospace;font-size:16px;letter-spacing:1px"></div>
             </div>
             <div class="fg" style="margin-bottom: 10px">
-              <label class="fl">Пароль (дата рождения)</label>
-              <div class="fi" id="credPassword" style="background:var(--bg);user-select:all;cursor:text"></div>
+              <label class="fl">Пароль</label>
+              <div class="fi" id="credPassword" style="background:var(--bg);user-select:all;cursor:text;font-family:monospace;font-size:16px;letter-spacing:1px"></div>
             </div>
             <div class="cd" style="background: var(--warn-bg); border-color: #fde68a; padding: 12px 14px">
               <p style="font-size: 13px; color: #92400e; display: flex; align-items: flex-start; gap: 8px">
@@ -311,24 +314,15 @@
         <!-- ===== SCREEN 5: CHECK ===== -->
         <section class="scr" id="scr-check" aria-label="Проверка готовности">
           <h2 class="tc">Проверка готовности</h2>
-          <p class="sub tc">Идёт проверка сигнала, связи и питания прибора.</p>
+          <p class="sub tc">Ожидание поступления данных от прибора.</p>
 
-          <div class="tmr" id="timerDisplay">01:40</div>
+          <div class="tmr" id="timerDisplay">03:00</div>
           <p class="sm tc mt8" id="checkDetail"></p>
 
           <div id="checkItems">
-            <div class="ci pd" id="ciSignal"><span class="ci-s"><i data-lucide="radio" style="width: 20px; height: 20px"></i></span>Сигнал прибора</div>
-            <div class="ci pd" id="ciLink"><span class="ci-s"><i data-lucide="wifi" style="width: 20px; height: 20px"></i></span>Связь с сервером</div>
-            <div class="ci pd" id="ciPower"><span class="ci-s"><i data-lucide="battery-charging" style="width: 20px; height: 20px"></i></span>Уровень заряда</div>
+            <div class="ci pd" id="ciCharge"><span class="ci-s"><i data-lucide="activity" style="width: 20px; height: 20px"></i></span>Данные с прибора</div>
           </div>
 
-          <div class="dbg">
-            <button class="dbg-tg" type="button" id="dbgToggle">Отладка (dev)</button>
-            <div class="dbg-c" id="dbgPanel">
-              <button class="btn btn-p" id="btnSimOk" type="button"><span class="bt">Симуляция: успех</span></button>
-              <button class="btn btn-d" id="btnSimFail" type="button"><span class="bt">Симуляция: неудача</span></button>
-            </div>
-          </div>
         </section>
 
         <!-- ===== SCREEN 6: SUCCESS ===== -->
@@ -355,16 +349,13 @@
             <h3>Что проверить</h3>
             <ul class="ck">
               <li class="ck-i">
-                <span class="ck-c"><i data-lucide="circle" style="width: 12px; height: 12px"></i></span>Электроды плотно прилегают к коже
+                <span class="ck-c"><i data-lucide="circle" style="width: 12px; height: 12px"></i></span>Модем включён и подключён к сети
               </li>
               <li class="ck-i">
-                <span class="ck-c"><i data-lucide="circle" style="width: 12px; height: 12px"></i></span>Модем включён и подключён к Wi-Fi
+                <span class="ck-c"><i data-lucide="circle" style="width: 12px; height: 12px"></i></span>Аккумуляторы заряжены
               </li>
               <li class="ck-i">
-                <span class="ck-c"><i data-lucide="circle" style="width: 12px; height: 12px"></i></span>Кабель прибора надёжно соединён с электродами
-              </li>
-              <li class="ck-i">
-                <span class="ck-c"><i data-lucide="circle" style="width: 12px; height: 12px"></i></span>Батарея прибора заряжена
+                <span class="ck-c"><i data-lucide="circle" style="width: 12px; height: 12px"></i></span>Перезапустите устройство (снимите и установите аккумулятор) и повторите проверку
               </li>
             </ul>
           </div>
@@ -382,13 +373,26 @@
           <h2>Дневник пациента</h2>
           <p class="sub">Отмечайте события в течение мониторинга для точной интерпретации данных.</p>
 
+          <div class="cd mb12" id="deviceStatusCard" style="display:none; padding:12px 16px;">
+            <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+              <span style="display:flex; align-items:center; gap:4px;">
+                <i data-lucide="battery-charging" style="width:16px;height:16px"></i>
+                <span id="deviceCharge">—</span>
+              </span>
+              <span style="display:flex; align-items:center; gap:4px;">
+                <i data-lucide="clock" style="width:16px;height:16px"></i>
+                <span id="deviceLastSeen">—</span>
+              </span>
+            </div>
+          </div>
+
           <div class="dg" id="diaryGrid">
-            <button class="dg-b" type="button" data-diary="Сон"><i data-lucide="moon" style="width: 22px; height: 22px"></i>Сон</button>
-            <button class="dg-b" type="button" data-diary="Ходьба"><i data-lucide="footprints" style="width: 22px; height: 22px"></i>Ходьба</button>
-            <button class="dg-b" type="button" data-diary="Бег"><i data-lucide="bike" style="width: 22px; height: 22px"></i>Бег</button>
-            <button class="dg-b" type="button" data-diary="Стресс"><i data-lucide="brain" style="width: 22px; height: 22px"></i>Стресс</button>
-            <button class="dg-b" type="button" data-diary="Приём лекарства"><i data-lucide="pill" style="width: 22px; height: 22px"></i>Лекарство</button>
-            <button class="dg-b" type="button" data-diary="Жалоба"><i data-lucide="message-circle-warning" style="width: 22px; height: 22px"></i>Жалоба</button>
+            <button class="dg-b" type="button" data-diary="Сон" data-duration><i data-lucide="moon" style="width: 22px; height: 22px"></i><span class="dg-label">Сон</span><span class="dg-status"></span></button>
+            <button class="dg-b" type="button" data-diary="Ходьба" data-duration><i data-lucide="footprints" style="width: 22px; height: 22px"></i><span class="dg-label">Ходьба</span><span class="dg-status"></span></button>
+            <button class="dg-b" type="button" data-diary="Бег" data-duration><i data-lucide="bike" style="width: 22px; height: 22px"></i><span class="dg-label">Бег</span><span class="dg-status"></span></button>
+            <button class="dg-b" type="button" data-diary="Стресс" data-duration><i data-lucide="brain" style="width: 22px; height: 22px"></i><span class="dg-label">Стресс</span><span class="dg-status"></span></button>
+            <button class="dg-b" type="button" data-diary="Приём лекарства"><i data-lucide="pill" style="width: 22px; height: 22px"></i><span class="dg-label">Лекарство</span></button>
+            <button class="dg-b" type="button" data-diary="Жалоба"><i data-lucide="message-circle-warning" style="width: 22px; height: 22px"></i><span class="dg-label">Жалоба</span></button>
           </div>
 
           <h3>Записи</h3>
@@ -422,32 +426,6 @@
           <button class="btn btn-s" id="btnCancelFinish" type="button"><span class="bt">Отмена</span></button>
         </section>
 
-        <!-- ===== SCREEN: SETTINGS ===== -->
-        <section class="scr" id="scr-settings" aria-label="Настройки MEDOM">
-          <button class="bk" type="button" id="bkSettings"><i data-lucide="arrow-left" style="width: 16px; height: 16px"></i> Назад</button>
-          <h2>Настройки MEDOM</h2>
-          <p class="sub">Введите учётные данные для подключения к серверу MEDOM.</p>
-
-          <div class="fg">
-            <label class="fl" for="fBackendUrl">URL Backend API <span class="rq">*</span></label>
-            <input class="fi" id="fBackendUrl" type="text" placeholder="http://127.0.0.1:8000" />
-          </div>
-          <div class="fg">
-            <label class="fl" for="fMedomLogin">Логин <span class="rq">*</span></label>
-            <input class="fi" id="fMedomLogin" type="text" placeholder="robot.user" autocomplete="off" />
-          </div>
-          <div class="fg">
-            <label class="fl" for="fMedomPass">Пароль <span class="rq">*</span></label>
-            <input class="fi" id="fMedomPass" type="password" placeholder="••••••••" autocomplete="off" />
-          </div>
-
-          <div class="cd mb12" id="medomStatus" style="display:none">
-            <p class="sm" id="medomStatusText"></p>
-          </div>
-
-          <button class="btn btn-p mb12" id="btnMedomSave" type="button"><span class="bt">Подключиться</span></button>
-          <p class="sm tc" style="color:var(--fg3)">Логин и пароль хранятся локально на этом устройстве в зашифрованном виде.</p>
-        </section>
 
         <!-- ===== SCREEN 11: FINISH DONE ===== -->
         <section class="scr" id="scr-finish-done" aria-label="Сессия завершена">
